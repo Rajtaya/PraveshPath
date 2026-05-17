@@ -70,6 +70,14 @@ class Course(models.Model):
         MANAGEMENT = 'management', 'Management'
         EDUCATION = 'education', 'Education'
         COMPUTER = 'computer', 'Computer Applications'
+        PHARMACY = 'pharmacy', 'Pharmacy'
+        NURSING = 'nursing', 'Nursing'
+        DENTAL = 'dental', 'Dental'
+        DESIGN = 'design', 'Design / Fine Arts'
+        AGRICULTURE = 'agriculture', 'Agriculture / Dairy / Horticulture'
+        VETERINARY = 'veterinary', 'Veterinary'
+        SPORTS = 'sports', 'Sports Science'
+        AYUSH = 'ayush', 'AYUSH'
         OTHER = 'other', 'Other'
 
     class Level(models.TextChoices):

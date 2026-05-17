@@ -72,6 +72,23 @@ def _meets_criteria(college_course, profile):
     return False
 
 
+SKIP_SUBJECT_PHRASES = {
+    'any', 'any 10+2', 'any 10+2 subjects', 'preferred', 'maths preferred',
+    'maths required', 'accountancy/maths preferred', "bachelor's degree",
+    "bachelor's any stream", 'relevant ug', 'relevant ug subject',
+    'maths at ug or 10+2', 'b.com preferred', 'relevant bachelor\'s',
+    'any with maths', 'any subjects',
+}
+
+KNOWN_SUBJECTS = {
+    'physics', 'chemistry', 'math', 'maths', 'mathematics',
+    'biology', 'english', 'hindi', 'economics', 'accountancy',
+    'business studies', 'computer science', 'physical education',
+    'history', 'geography', 'political science', 'sociology',
+    'psychology', 'sanskrit', 'home science',
+}
+
+
 def _check_single_criteria(criteria, profile):
     if criteria.min_10th_percentage and profile.class_10_percentage < criteria.min_10th_percentage:
         return False
@@ -90,10 +107,20 @@ def _check_single_criteria(criteria, profile):
     if criteria.domicile_required and not profile.haryana_domicile:
         return False
 
-    if criteria.required_subjects:
-        required = {s.strip().lower() for s in criteria.required_subjects.split(',')}
-        student_subjects = {s.strip().lower() for s in profile.class_12_subjects.split(',')}
-        if not required.issubset(student_subjects):
-            return False
+    if criteria.required_subjects and profile.class_12_subjects:
+        req_text = criteria.required_subjects.strip().lower()
+        if req_text not in SKIP_SUBJECT_PHRASES:
+            required = {s.strip().lower() for s in req_text.split(',')}
+            if required & KNOWN_SUBJECTS:
+                student_subjects = {s.strip().lower() for s in profile.class_12_subjects.split(',')}
+                norm_student = set()
+                for s in student_subjects:
+                    norm_student.add(s)
+                    if s in ('math', 'mathematics'):
+                        norm_student.add('maths')
+                    if s == 'maths':
+                        norm_student.add('math')
+                if not required.issubset(norm_student):
+                    return False
 
     return True
