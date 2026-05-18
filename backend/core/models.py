@@ -29,36 +29,6 @@ class University(models.Model):
         return f"{self.name} ({self.short_name})"
 
 
-class College(models.Model):
-    class Type(models.TextChoices):
-        GOVT = 'govt', 'Government'
-        GOVT_AIDED = 'govt_aided', 'Government Aided'
-        SELF_FINANCED = 'self_financed', 'Self Financed'
-        PRIVATE = 'private', 'Private'
-
-    name = models.CharField(max_length=255)
-    university = models.ForeignKey(University, on_delete=models.CASCADE, related_name='colleges')
-    college_type = models.CharField(max_length=20, choices=Type.choices)
-    city = models.CharField(max_length=100)
-    district = models.CharField(max_length=100)
-    address = models.TextField(blank=True)
-    pincode = models.CharField(max_length=6, blank=True)
-    website = models.URLField(blank=True)
-    phone = models.CharField(max_length=15, blank=True)
-    email = models.EmailField(blank=True)
-    established_year = models.PositiveIntegerField(null=True, blank=True)
-    naac_grade = models.CharField(max_length=10, blank=True)
-    co_education = models.BooleanField(default=True)
-    hostel_available = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-
-    class Meta:
-        ordering = ['name']
-
-    def __str__(self):
-        return self.name
-
-
 class Course(models.Model):
     class Stream(models.TextChoices):
         ARTS = 'arts', 'Arts / Humanities'
@@ -102,18 +72,18 @@ class Course(models.Model):
         return f"{self.name} ({self.get_level_display()})"
 
 
-class CollegeCourse(models.Model):
-    college = models.ForeignKey(College, on_delete=models.CASCADE, related_name='offered_courses')
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='colleges')
+class UniversityCourse(models.Model):
+    university = models.ForeignKey(University, on_delete=models.CASCADE, related_name='offered_courses')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='universities')
     total_seats = models.PositiveIntegerField(null=True, blank=True)
     annual_fee = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     is_active = models.BooleanField(default=True)
 
     class Meta:
-        unique_together = ['college', 'course']
+        unique_together = ['university', 'course']
 
     def __str__(self):
-        return f"{self.college.name} - {self.course.name}"
+        return f"{self.university.short_name} - {self.course.name}"
 
 
 class EligibilityCriteria(models.Model):
@@ -123,8 +93,8 @@ class EligibilityCriteria(models.Model):
         CBSE = 'cbse', 'CBSE'
         ICSE = 'icse', 'ICSE'
 
-    college_course = models.ForeignKey(
-        CollegeCourse, on_delete=models.CASCADE, related_name='eligibility_criteria'
+    university_course = models.ForeignKey(
+        UniversityCourse, on_delete=models.CASCADE, related_name='eligibility_criteria'
     )
     min_10th_percentage = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     min_12th_percentage = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
@@ -150,7 +120,7 @@ class EligibilityCriteria(models.Model):
         verbose_name_plural = 'eligibility criteria'
 
     def __str__(self):
-        return f"Criteria for {self.college_course}"
+        return f"Criteria for {self.university_course}"
 
 
 class AdmissionCycle(models.Model):
@@ -160,8 +130,8 @@ class AdmissionCycle(models.Model):
         CLOSED = 'closed', 'Applications Closed'
         COUNSELLING = 'counselling', 'Counselling in Progress'
 
-    college_course = models.ForeignKey(
-        CollegeCourse, on_delete=models.CASCADE, related_name='admission_cycles'
+    university_course = models.ForeignKey(
+        UniversityCourse, on_delete=models.CASCADE, related_name='admission_cycles'
     )
     academic_year = models.CharField(max_length=9, help_text='e.g. 2026-2027')
     application_start = models.DateField()
@@ -177,7 +147,7 @@ class AdmissionCycle(models.Model):
         ordering = ['-application_end']
 
     def __str__(self):
-        return f"{self.college_course} — {self.academic_year}"
+        return f"{self.university_course} — {self.academic_year}"
 
 
 class RequiredDocument(models.Model):
@@ -188,15 +158,15 @@ class RequiredDocument(models.Model):
         return self.name
 
 
-class CollegeCourseDocument(models.Model):
-    college_course = models.ForeignKey(
-        CollegeCourse, on_delete=models.CASCADE, related_name='required_documents'
+class UniversityCourseDocument(models.Model):
+    university_course = models.ForeignKey(
+        UniversityCourse, on_delete=models.CASCADE, related_name='required_documents'
     )
     document = models.ForeignKey(RequiredDocument, on_delete=models.CASCADE)
     is_mandatory = models.BooleanField(default=True)
 
     class Meta:
-        unique_together = ['college_course', 'document']
+        unique_together = ['university_course', 'document']
 
     def __str__(self):
-        return f"{self.document.name} for {self.college_course}"
+        return f"{self.document.name} for {self.university_course}"

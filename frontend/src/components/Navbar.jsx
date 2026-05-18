@@ -14,7 +14,7 @@ export default function Navbar() {
         </Link>
         <div className="nav-links">
           <Link to="/" className={isActive('/')}>Home</Link>
-          <Link to="/profile" className={isActive('/profile')}>Find Colleges</Link>
+          <Link to="/profile" className={isActive('/profile')}>Find Programmes</Link>
           <Link to="/browse" className={isActive('/browse')}>Browse</Link>
         </div>
       </div>

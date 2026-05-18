@@ -2,34 +2,33 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { createProfile } from '../api/client'
 
-const STREAMS = [
-  { value: 'arts', label: 'Arts / Humanities' },
-  { value: 'commerce', label: 'Commerce' },
+const CLASS_12_STREAMS = [
   { value: 'science', label: 'Science' },
-  { value: 'computer', label: 'Computer Applications' },
-  { value: 'engineering', label: 'Engineering' },
+  { value: 'commerce', label: 'Commerce' },
+  { value: 'arts', label: 'Arts / Humanities' },
+]
+
+const GRADUATION_STREAMS = [
+  { value: 'science', label: 'Science' },
+  { value: 'commerce', label: 'Commerce' },
+  { value: 'arts', label: 'Arts / Humanities' },
+  { value: 'engineering', label: 'Engineering / Technology' },
   { value: 'management', label: 'Management' },
-  { value: 'medical', label: 'Medical' },
+  { value: 'computer', label: 'Computer Applications' },
   { value: 'law', label: 'Law' },
   { value: 'education', label: 'Education' },
+  { value: 'medical', label: 'Medical' },
+  { value: 'other', label: 'Other' },
 ]
+
 
 const DISTRICTS = [
-  'ambala', 'bhiwani', 'charkhi dadri', 'faridabad', 'fatehabad',
-  'gurugram', 'hisar', 'jhajjar', 'jind', 'kaithal', 'karnal',
-  'kurukshetra', 'mahendragarh', 'nuh', 'palwal', 'panchkula',
-  'panipat', 'rewari', 'rohtak', 'sirsa', 'sonipat', 'yamunanagar',
+  'Ambala', 'Bhiwani', 'Charkhi Dadri', 'Faridabad', 'Fatehabad',
+  'Gurugram', 'Hisar', 'Jhajjar', 'Jind', 'Kaithal', 'Karnal',
+  'Kurukshetra', 'Mahendragarh', 'Nuh', 'Palwal', 'Panchkula',
+  'Panipat', 'Rewari', 'Rohtak', 'Sirsa', 'Sonipat', 'Yamunanagar',
 ]
 
-const CATEGORIES = [
-  { value: 'general', label: 'General' },
-  { value: 'sc', label: 'SC' },
-  { value: 'st', label: 'ST' },
-  { value: 'bc_a', label: 'BC-A' },
-  { value: 'bc_b', label: 'BC-B' },
-  { value: 'ews', label: 'EWS' },
-  { value: 'obc', label: 'OBC' },
-]
 
 export default function ProfileWizard() {
   const navigate = useNavigate()
@@ -38,31 +37,49 @@ export default function ProfileWizard() {
   const [error, setError] = useState('')
   const [form, setForm] = useState({
     full_name: '',
+    preferred_level: '',
     class_10_percentage: '',
     class_12_percentage: '',
     class_12_stream: '',
     class_12_subjects: '',
-    category: 'general',
+    graduation_stream: '',
+    graduation_percentage: '',
+    graduation_subject: '',
     haryana_domicile: true,
-    preferred_stream: '',
-    preferred_level: 'ug',
     preferred_districts: '',
     max_annual_fee: '',
   })
+
+  const isUG = form.preferred_level === 'ug'
+  const isPG = form.preferred_level === 'pg'
 
   const update = (field, value) => {
     setForm(prev => ({ ...prev, [field]: value }))
     setError('')
   }
 
+  const STEP_LABELS = ['Select Level', 'Academic Info', 'Preferences', 'Confirm']
+
   const validateStep = () => {
     if (step === 1) {
+      if (!form.preferred_level) return 'Please select a level'
+    }
+    if (step === 2) {
       if (!form.full_name) return 'Please enter your name'
-      if (!form.class_10_percentage || form.class_10_percentage < 0 || form.class_10_percentage > 100)
-        return 'Enter valid 10th percentage'
-      if (!form.class_12_percentage || form.class_12_percentage < 0 || form.class_12_percentage > 100)
-        return 'Enter valid 12th percentage'
-      if (!form.class_12_stream) return 'Select your 12th stream'
+      if (isUG) {
+        if (!form.class_10_percentage || form.class_10_percentage < 0 || form.class_10_percentage > 100)
+          return 'Enter valid 10th percentage'
+        if (!form.class_12_percentage || form.class_12_percentage < 0 || form.class_12_percentage > 100)
+          return 'Enter valid 12th percentage'
+        if (!form.class_12_stream) return 'Select your 12th stream'
+      }
+      if (isPG) {
+        if (!form.graduation_stream) return 'Select your graduation stream'
+        if (!form.graduation_percentage || form.graduation_percentage < 0 || form.graduation_percentage > 100)
+          return 'Enter valid graduation percentage'
+        if (!form.class_12_percentage || form.class_12_percentage < 0 || form.class_12_percentage > 100)
+          return 'Enter valid 12th percentage'
+      }
     }
     return ''
   }
@@ -79,6 +96,16 @@ export default function ProfileWizard() {
     try {
       const payload = { ...form }
       if (payload.max_annual_fee === '') delete payload.max_annual_fee
+      if (isUG) {
+        delete payload.graduation_stream
+        delete payload.graduation_percentage
+        delete payload.graduation_subject
+      }
+      if (isPG) {
+        delete payload.class_10_percentage
+        delete payload.class_12_stream
+        delete payload.class_12_subjects
+      }
       const res = await createProfile(payload)
       navigate(`/results/${res.data.session_id}`)
     } catch (err) {
@@ -91,19 +118,18 @@ export default function ProfileWizard() {
   return (
     <div className="wizard">
       <div className="wizard-header">
-        <h1>Find Eligible Colleges</h1>
-        <p>Fill your details to discover matching colleges and courses</p>
+        <h1>Find Eligible Programmes</h1>
+        <p>Fill your details to discover matching universities and programmes</p>
         <div className="steps">
-          <div className={`step-dot ${step >= 1 ? 'active' : ''}`}>1</div>
-          <div className="step-line" />
-          <div className={`step-dot ${step >= 2 ? 'active' : ''}`}>2</div>
-          <div className="step-line" />
-          <div className={`step-dot ${step >= 3 ? 'active' : ''}`}>3</div>
+          {STEP_LABELS.map((_, i) => (
+            <div key={i} className="step-group">
+              <div className={`step-dot ${step >= i + 1 ? 'active' : ''}`}>{i + 1}</div>
+              {i < STEP_LABELS.length - 1 && <div className="step-line" />}
+            </div>
+          ))}
         </div>
         <div className="step-labels">
-          <span>Academic Info</span>
-          <span>Preferences</span>
-          <span>Confirm</span>
+          {STEP_LABELS.map(label => <span key={label}>{label}</span>)}
         </div>
       </div>
 
@@ -112,7 +138,31 @@ export default function ProfileWizard() {
       <div className="wizard-body card">
         {step === 1 && (
           <div className="form-step">
-            <h2>Academic Information</h2>
+            <h2>What level are you looking for?</h2>
+            <div className="level-cards">
+              <div
+                className={`level-card ${form.preferred_level === 'ug' ? 'selected' : ''}`}
+                onClick={() => update('preferred_level', 'ug')}
+              >
+                <div className="level-icon">&#x1F393;</div>
+                <h3>Undergraduate (UG)</h3>
+                <p>B.A., B.Sc., B.Com., B.Tech, BBA, BCA, LL.B and more</p>
+              </div>
+              <div
+                className={`level-card ${form.preferred_level === 'pg' ? 'selected' : ''}`}
+                onClick={() => update('preferred_level', 'pg')}
+              >
+                <div className="level-icon">&#x1F4DA;</div>
+                <h3>Postgraduate (PG)</h3>
+                <p>M.A., M.Sc., M.Com., M.Tech, MBA, MCA, LL.M and more</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {step === 2 && isUG && (
+          <div className="form-step">
+            <h2>Academic Information (UG)</h2>
             <div className="form-group">
               <label>Full Name</label>
               <input
@@ -151,7 +201,7 @@ export default function ProfileWizard() {
                 onChange={e => update('class_12_stream', e.target.value)}
               >
                 <option value="">Select stream</option>
-                {STREAMS.map(s => (
+                {CLASS_12_STREAMS.map(s => (
                   <option key={s.value} value={s.value}>{s.label}</option>
                 ))}
               </select>
@@ -165,55 +215,90 @@ export default function ProfileWizard() {
                 placeholder="e.g. Physics, Chemistry, Math"
               />
             </div>
-            <div className="form-row">
-              <div className="form-group">
-                <label>Category</label>
-                <select value={form.category} onChange={e => update('category', e.target.value)}>
-                  {CATEGORIES.map(c => (
-                    <option key={c.value} value={c.value}>{c.label}</option>
-                  ))}
-                </select>
-              </div>
-              <div className="form-group">
-                <label>Haryana Domicile?</label>
-                <select
-                  value={form.haryana_domicile ? 'yes' : 'no'}
-                  onChange={e => update('haryana_domicile', e.target.value === 'yes')}
-                >
-                  <option value="yes">Yes</option>
-                  <option value="no">No</option>
-                </select>
-              </div>
+            <div className="form-group">
+              <label>Haryana Domicile?</label>
+              <select
+                value={form.haryana_domicile ? 'yes' : 'no'}
+                onChange={e => update('haryana_domicile', e.target.value === 'yes')}
+              >
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
             </div>
           </div>
         )}
 
-        {step === 2 && (
+        {step === 2 && isPG && (
           <div className="form-step">
-            <h2>Your Preferences</h2>
+            <h2>Academic Information (PG)</h2>
             <div className="form-group">
-              <label>Preferred Stream (for admission)</label>
+              <label>Full Name</label>
+              <input
+                type="text"
+                value={form.full_name}
+                onChange={e => update('full_name', e.target.value)}
+                placeholder="Enter your full name"
+              />
+            </div>
+            <div className="form-group">
+              <label>Graduation Stream</label>
               <select
-                value={form.preferred_stream}
-                onChange={e => update('preferred_stream', e.target.value)}
+                value={form.graduation_stream}
+                onChange={e => update('graduation_stream', e.target.value)}
               >
-                <option value="">Any stream</option>
-                {STREAMS.map(s => (
+                <option value="">Select stream</option>
+                {GRADUATION_STREAMS.map(s => (
                   <option key={s.value} value={s.value}>{s.label}</option>
                 ))}
               </select>
             </div>
+            <div className="form-row">
+              <div className="form-group">
+                <label>Graduation Percentage</label>
+                <input
+                  type="number"
+                  min="0" max="100" step="0.01"
+                  value={form.graduation_percentage}
+                  onChange={e => update('graduation_percentage', e.target.value)}
+                  placeholder="e.g. 65.0"
+                />
+              </div>
+              <div className="form-group">
+                <label>12th Percentage</label>
+                <input
+                  type="number"
+                  min="0" max="100" step="0.01"
+                  value={form.class_12_percentage}
+                  onChange={e => update('class_12_percentage', e.target.value)}
+                  placeholder="e.g. 72.0"
+                />
+              </div>
+            </div>
             <div className="form-group">
-              <label>Level</label>
+              <label>Graduation Subject / Specialization</label>
+              <input
+                type="text"
+                value={form.graduation_subject}
+                onChange={e => update('graduation_subject', e.target.value)}
+                placeholder="e.g. English, Physics, Computer Science"
+              />
+            </div>
+            <div className="form-group">
+              <label>Haryana Domicile?</label>
               <select
-                value={form.preferred_level}
-                onChange={e => update('preferred_level', e.target.value)}
+                value={form.haryana_domicile ? 'yes' : 'no'}
+                onChange={e => update('haryana_domicile', e.target.value === 'yes')}
               >
-                <option value="ug">Undergraduate (UG)</option>
-                <option value="pg">Postgraduate (PG)</option>
-                <option value="diploma">Diploma</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
               </select>
             </div>
+          </div>
+        )}
+
+        {step === 3 && (
+          <div className="form-step">
+            <h2>Your Preferences</h2>
             <div className="form-group">
               <label>Preferred Districts</label>
               <div className="checkbox-grid">
@@ -233,7 +318,7 @@ export default function ProfileWizard() {
                         }
                       }}
                     />
-                    <span>{d.charAt(0).toUpperCase() + d.slice(1)}</span>
+                    <span>{d}</span>
                   </label>
                 ))}
               </div>
@@ -252,37 +337,61 @@ export default function ProfileWizard() {
           </div>
         )}
 
-        {step === 3 && (
+        {step === 4 && (
           <div className="form-step">
             <h2>Confirm Your Details</h2>
             <div className="summary-grid">
               <div className="summary-item">
+                <span className="label">Level</span>
+                <span className="value">{isUG ? 'Undergraduate (UG)' : 'Postgraduate (PG)'}</span>
+              </div>
+              <div className="summary-item">
                 <span className="label">Name</span>
                 <span className="value">{form.full_name}</span>
               </div>
-              <div className="summary-item">
-                <span className="label">10th %</span>
-                <span className="value">{form.class_10_percentage}%</span>
-              </div>
-              <div className="summary-item">
-                <span className="label">12th %</span>
-                <span className="value">{form.class_12_percentage}%</span>
-              </div>
-              <div className="summary-item">
-                <span className="label">Stream</span>
-                <span className="value">{form.class_12_stream}</span>
-              </div>
-              <div className="summary-item">
-                <span className="label">Category</span>
-                <span className="value">{form.category.toUpperCase()}</span>
-              </div>
+              {isUG && (
+                <>
+                  <div className="summary-item">
+                    <span className="label">10th %</span>
+                    <span className="value">{form.class_10_percentage}%</span>
+                  </div>
+                  <div className="summary-item">
+                    <span className="label">12th %</span>
+                    <span className="value">{form.class_12_percentage}%</span>
+                  </div>
+                  <div className="summary-item">
+                    <span className="label">12th Stream</span>
+                    <span className="value">{form.class_12_stream}</span>
+                  </div>
+                </>
+              )}
+              {isPG && (
+                <>
+                  <div className="summary-item">
+                    <span className="label">Graduation Stream</span>
+                    <span className="value">
+                      {GRADUATION_STREAMS.find(s => s.value === form.graduation_stream)?.label || form.graduation_stream}
+                    </span>
+                  </div>
+                  <div className="summary-item">
+                    <span className="label">Graduation %</span>
+                    <span className="value">{form.graduation_percentage}%</span>
+                  </div>
+                  <div className="summary-item">
+                    <span className="label">12th %</span>
+                    <span className="value">{form.class_12_percentage}%</span>
+                  </div>
+                  {form.graduation_subject && (
+                    <div className="summary-item">
+                      <span className="label">Subject</span>
+                      <span className="value">{form.graduation_subject}</span>
+                    </div>
+                  )}
+                </>
+              )}
               <div className="summary-item">
                 <span className="label">Domicile</span>
                 <span className="value">{form.haryana_domicile ? 'Haryana' : 'Other State'}</span>
-              </div>
-              <div className="summary-item">
-                <span className="label">Preferred Stream</span>
-                <span className="value">{form.preferred_stream || 'Any'}</span>
               </div>
               <div className="summary-item">
                 <span className="label">Max Fee</span>
@@ -304,13 +413,13 @@ export default function ProfileWizard() {
               Back
             </button>
           )}
-          {step < 3 ? (
+          {step < 4 ? (
             <button className="btn btn-primary" onClick={nextStep}>
               Next
             </button>
           ) : (
             <button className="btn btn-success btn-lg" onClick={submit} disabled={loading}>
-              {loading ? 'Finding matches...' : 'Find My Colleges'}
+              {loading ? 'Finding matches...' : 'Find My Programmes'}
             </button>
           )}
         </div>
@@ -322,6 +431,7 @@ export default function ProfileWizard() {
         .wizard-header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
         .wizard-header p { color: var(--text-muted); }
         .steps { display: flex; align-items: center; justify-content: center; margin: 1.5rem 0 0.5rem; gap: 0; }
+        .step-group { display: flex; align-items: center; }
         .step-dot {
           width: 36px; height: 36px; border-radius: 50%;
           display: flex; align-items: center; justify-content: center;
@@ -329,8 +439,19 @@ export default function ProfileWizard() {
           font-weight: 600; font-size: 0.9rem;
         }
         .step-dot.active { background: var(--primary); color: white; }
-        .step-line { width: 60px; height: 2px; background: var(--border); }
-        .step-labels { display: flex; justify-content: center; gap: 3rem; font-size: 0.8rem; color: var(--text-muted); }
+        .step-line { width: 50px; height: 2px; background: var(--border); }
+        .step-labels { display: flex; justify-content: center; gap: 2rem; font-size: 0.8rem; color: var(--text-muted); }
+        .level-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1rem; }
+        .level-card {
+          border: 2px solid var(--border); border-radius: var(--radius);
+          padding: 2rem 1.5rem; text-align: center; cursor: pointer;
+          transition: all 0.2s;
+        }
+        .level-card:hover { border-color: var(--primary-light); background: #f8faff; }
+        .level-card.selected { border-color: var(--primary); background: #eff6ff; }
+        .level-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+        .level-card h3 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+        .level-card p { font-size: 0.82rem; color: var(--text-muted); margin: 0; }
         .form-step h2 { font-size: 1.3rem; margin-bottom: 1.5rem; }
         .form-group { margin-bottom: 1.25rem; }
         .form-group label { display: block; font-weight: 500; margin-bottom: 0.4rem; font-size: 0.9rem; }

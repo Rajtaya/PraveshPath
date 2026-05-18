@@ -1,141 +1,249 @@
 import { useState, useEffect } from 'react'
-import { getCollegeCourses, getUniversities } from '../api/client'
+import { getBrowseUniversities, getUniversityProgrammes } from '../api/client'
 
 export default function Browse() {
-  const [results, setResults] = useState([])
+  const [level, setLevel] = useState(null)
   const [universities, setUniversities] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [filters, setFilters] = useState({
-    search: '',
-    course__stream: '',
-    course__level: '',
-    college__university: '',
-    college__district: '',
-  })
+  const [selectedUni, setSelectedUni] = useState(null)
+  const [programmes, setProgrammes] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [uniSearch, setUniSearch] = useState('')
 
   useEffect(() => {
-    getUniversities().then(res => setUniversities(res.data.results || res.data))
-  }, [])
+    if (!level) return
+    setLoading(true)
+    setSelectedUni(null)
+    setProgrammes([])
+    getBrowseUniversities(level)
+      .then(res => setUniversities(res.data))
+      .finally(() => setLoading(false))
+  }, [level])
 
-  useEffect(() => {
-    const fetch = async () => {
-      setLoading(true)
-      try {
-        const params = {}
-        Object.entries(filters).forEach(([key, val]) => {
-          if (val) params[key === 'search' ? 'search' : key] = val
-        })
-        const res = await getCollegeCourses(params)
-        setResults(res.data.results || res.data)
-      } catch (err) {
-        console.error(err)
-      } finally {
-        setLoading(false)
-      }
-    }
-    const timer = setTimeout(fetch, 300)
-    return () => clearTimeout(timer)
-  }, [filters])
+  const handleSelectUni = (uni) => {
+    setSelectedUni(uni)
+    setLoading(true)
+    getUniversityProgrammes(uni.id, level)
+      .then(res => setProgrammes(res.data))
+      .finally(() => setLoading(false))
+  }
 
-  const updateFilter = (key, value) => setFilters(f => ({ ...f, [key]: value }))
+  const filteredUnis = universities.filter(u =>
+    u.name.toLowerCase().includes(uniSearch.toLowerCase()) ||
+    u.short_name.toLowerCase().includes(uniSearch.toLowerCase())
+  )
 
-  return (
-    <div className="browse-page">
-      <h1>Browse Colleges & Courses</h1>
+  if (!level) {
+    return (
+      <div className="browse-page">
+        <h1>Browse Universities & Programmes</h1>
+        <p className="browse-subtitle">What level of programme are you looking for?</p>
+        <div className="level-cards">
+          <div className="level-card" onClick={() => setLevel('ug')}>
+            <div className="level-icon">🎓</div>
+            <h2>Undergraduate (UG)</h2>
+            <p>B.A., B.Sc, B.Com, BCA, BBA, B.Ed and more</p>
+          </div>
+          <div className="level-card" onClick={() => setLevel('pg')}>
+            <div className="level-icon">📚</div>
+            <h2>Postgraduate (PG)</h2>
+            <p>M.A., M.Sc, M.Com, MCA, MBA and more</p>
+          </div>
+        </div>
+        <style>{browseStyles}</style>
+      </div>
+    )
+  }
 
-      <div className="browse-filters card">
+  if (!selectedUni) {
+    return (
+      <div className="browse-page">
+        <div className="browse-breadcrumb">
+          <span className="crumb clickable" onClick={() => setLevel(null)}>Level</span>
+          <span className="crumb-sep">/</span>
+          <span className="crumb active">{level.toUpperCase()} Universities</span>
+        </div>
+        <h1>{level.toUpperCase()} Programmes — Select University</h1>
+
         <input
           type="text"
-          placeholder="Search colleges or courses..."
-          value={filters.search}
-          onChange={e => updateFilter('search', e.target.value)}
+          placeholder="Search universities..."
+          value={uniSearch}
+          onChange={e => setUniSearch(e.target.value)}
           className="search-input"
         />
-        <div className="filter-row">
-          <select value={filters['course__stream']} onChange={e => updateFilter('course__stream', e.target.value)}>
-            <option value="">All Streams</option>
-            <option value="arts">Arts</option>
-            <option value="science">Science</option>
-            <option value="commerce">Commerce</option>
-            <option value="computer">Computer</option>
-            <option value="engineering">Engineering</option>
-            <option value="management">Management</option>
-            <option value="law">Law</option>
-            <option value="medical">Medical</option>
-            <option value="education">Education</option>
-          </select>
-          <select value={filters['course__level']} onChange={e => updateFilter('course__level', e.target.value)}>
-            <option value="">All Levels</option>
-            <option value="ug">Undergraduate</option>
-            <option value="pg">Postgraduate</option>
-            <option value="diploma">Diploma</option>
-          </select>
-          <select value={filters['college__university']} onChange={e => updateFilter('college__university', e.target.value)}>
-            <option value="">All Universities</option>
-            {universities.map(u => (
-              <option key={u.id} value={u.id}>{u.short_name}</option>
-            ))}
-          </select>
-        </div>
-      </div>
 
-      {loading ? (
-        <div className="loading">Loading...</div>
-      ) : (
-        <>
-          <p className="browse-count">{results.length} results</p>
-          <div className="browse-grid">
-            {results.map(item => (
-              <div key={item.id} className="card browse-card">
-                <div className="browse-card-header">
-                  <span className={`badge badge-${item.college_type}`}>
-                    {item.college_type.replace('_', ' ')}
-                  </span>
-                  <span className="uni-tag">{item.university_name}</span>
+        {loading ? (
+          <div className="loading">Loading universities...</div>
+        ) : (
+          <div className="uni-grid">
+            {filteredUnis.map(uni => (
+              <div key={uni.id} className="card uni-card" onClick={() => handleSelectUni(uni)}>
+                <div className="uni-card-header">
+                  <span className={`badge badge-${uni.university_type}`}>{uni.university_type}</span>
+                  <span className="uni-programme-count">{uni.programme_count} programmes</span>
                 </div>
-                <h3>{item.college_name}</h3>
-                <p className="browse-course">{item.course_name}</p>
-                <div className="browse-meta">
-                  <span>{item.college_district}</span>
-                  {item.annual_fee && <span>&#x20B9;{Number(item.annual_fee).toLocaleString()}/yr</span>}
-                  {item.total_seats && <span>{item.total_seats} seats</span>}
+                <h3>{uni.short_name}</h3>
+                <p className="uni-full-name">{uni.name}</p>
+                <p className="uni-district">{uni.district}</p>
+                <div className="uni-programmes">
+                  {uni.programmes.slice(0, 6).map(p => (
+                    <span key={p} className="programme-chip">{p}</span>
+                  ))}
+                  {uni.programmes.length > 6 && (
+                    <span className="programme-chip more">+{uni.programmes.length - 6}</span>
+                  )}
                 </div>
-                {item.application_deadline && (
-                  <div className="deadline">
-                    <span className={`badge badge-${item.current_status}`}>{item.current_status}</span>
-                    <span className="deadline-date">Deadline: {item.application_deadline}</span>
-                  </div>
-                )}
               </div>
             ))}
           </div>
-        </>
-      )}
+        )}
+        <style>{browseStyles}</style>
+      </div>
+    )
+  }
 
-      <style>{`
-        .browse-page h1 { font-size: 1.8rem; margin-bottom: 1.5rem; }
-        .browse-filters { margin-bottom: 1.5rem; }
-        .search-input {
-          width: 100%; padding: 0.75rem 1rem;
-          border: 1px solid var(--border); border-radius: var(--radius);
-          font-size: 1rem; margin-bottom: 1rem;
-        }
-        .search-input:focus { outline: none; border-color: var(--primary-light); box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
-        .filter-row { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-        .filter-row select { padding: 0.5rem 0.75rem; border: 1px solid var(--border); border-radius: var(--radius); font-size: 0.85rem; }
-        .browse-count { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem; }
-        .browse-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; }
-        .browse-card { transition: box-shadow 0.2s; }
-        .browse-card:hover { box-shadow: var(--shadow-md); }
-        .browse-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
-        .uni-tag { font-size: 0.75rem; font-weight: 600; color: var(--primary); }
-        .browse-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
-        .browse-course { color: var(--primary); font-weight: 500; font-size: 0.9rem; margin-bottom: 0.5rem; }
-        .browse-meta { display: flex; gap: 1rem; font-size: 0.8rem; color: var(--text-muted); }
-        .deadline { margin-top: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
-        .deadline-date { font-size: 0.8rem; color: var(--text-muted); }
-        .loading { text-align: center; padding: 3rem; color: var(--text-muted); }
-      `}</style>
+  return (
+    <div className="browse-page">
+      <div className="browse-breadcrumb">
+        <span className="crumb clickable" onClick={() => setLevel(null)}>Level</span>
+        <span className="crumb-sep">/</span>
+        <span className="crumb clickable" onClick={() => setSelectedUni(null)}>{level.toUpperCase()} Universities</span>
+        <span className="crumb-sep">/</span>
+        <span className="crumb active">{selectedUni.short_name}</span>
+      </div>
+
+      <div className="uni-detail-header">
+        <div>
+          <h1>{selectedUni.name}</h1>
+          <p className="uni-meta">
+            <span className={`badge badge-${selectedUni.university_type}`}>{selectedUni.university_type}</span>
+            <span>{selectedUni.district}</span>
+            <span>{programmes.length} programmes</span>
+          </p>
+        </div>
+        {selectedUni.website && (
+          <a href={selectedUni.website} target="_blank" rel="noopener noreferrer" className="btn-outline">
+            Visit Website
+          </a>
+        )}
+      </div>
+
+      {loading ? (
+        <div className="loading">Loading programmes...</div>
+      ) : (
+        <div className="programme-list">
+          {programmes.map(prog => (
+            <div key={prog.id} className="card programme-card">
+              <div className="programme-card-header">
+                <div className="programme-name-row">
+                  <h3>{prog.course_name}</h3>
+                  <span className={`badge badge-${prog.status}`}>{prog.status}</span>
+                </div>
+                <div className="programme-meta">
+                  <span className={`stream-tag stream-${prog.stream}`}>{prog.stream}</span>
+                  <span>{prog.duration_years} yr</span>
+                  {prog.total_seats && <span>{prog.total_seats} seats</span>}
+                  {prog.annual_fee && <span>₹{Number(prog.annual_fee).toLocaleString()}/yr</span>}
+                </div>
+              </div>
+              <div className="programme-details">
+                {prog.entrance_exam && <span className="detail-chip">Entrance: {prog.entrance_exam}</span>}
+                {prog.application_end && <span className="detail-chip">Deadline: {prog.application_end}</span>}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+      <style>{browseStyles}</style>
     </div>
   )
 }
+
+const browseStyles = `
+  .browse-page h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+  .browse-subtitle { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2rem; }
+
+  .browse-breadcrumb { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 1.25rem; font-size: 0.85rem; }
+  .crumb { color: var(--text-muted); }
+  .crumb.clickable { color: var(--primary); cursor: pointer; }
+  .crumb.clickable:hover { text-decoration: underline; }
+  .crumb.active { color: var(--text); font-weight: 600; }
+  .crumb-sep { color: var(--border); }
+
+  .level-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 700px; }
+  .level-card {
+    background: #fff; border: 2px solid var(--border); border-radius: var(--radius);
+    padding: 2.5rem 2rem; text-align: center; cursor: pointer;
+    transition: all 0.2s;
+  }
+  .level-card:hover { border-color: var(--primary); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .level-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+  .level-card h2 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+  .level-card p { color: var(--text-muted); font-size: 0.9rem; }
+
+  .search-input {
+    width: 100%; max-width: 400px; padding: 0.7rem 1rem;
+    border: 1px solid var(--border); border-radius: var(--radius);
+    font-size: 0.95rem; margin-bottom: 1.5rem;
+  }
+  .search-input:focus { outline: none; border-color: var(--primary-light); box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
+
+  .uni-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; }
+  .uni-card { cursor: pointer; transition: all 0.2s; }
+  .uni-card:hover { box-shadow: var(--shadow-md); border-color: var(--primary-light); }
+  .uni-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+  .uni-programme-count { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; }
+  .uni-card h3 { font-size: 1.2rem; color: var(--primary); margin-bottom: 0.2rem; }
+  .uni-full-name { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .uni-district { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem; text-transform: capitalize; }
+  .uni-programmes { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .programme-chip {
+    font-size: 0.7rem; padding: 0.2rem 0.5rem;
+    background: #f0f4ff; color: var(--primary); border-radius: 12px; font-weight: 500;
+  }
+  .programme-chip.more { background: #e8e8e8; color: var(--text-muted); }
+
+  .uni-detail-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .uni-meta { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted); }
+  .btn-outline {
+    padding: 0.5rem 1rem; border: 1px solid var(--primary); color: var(--primary);
+    border-radius: var(--radius); font-size: 0.85rem; text-decoration: none; font-weight: 500;
+    transition: all 0.15s;
+  }
+  .btn-outline:hover { background: var(--primary); color: #fff; }
+
+  .programme-list { display: flex; flex-direction: column; gap: 1rem; }
+  .programme-card { transition: box-shadow 0.2s; }
+  .programme-card:hover { box-shadow: var(--shadow-md); }
+  .programme-card-header { margin-bottom: 0.5rem; }
+  .programme-name-row { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; margin-bottom: 0.4rem; }
+  .programme-name-row h3 { font-size: 1rem; margin: 0; flex: 1; }
+  .programme-meta { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; font-size: 0.8rem; color: var(--text-muted); }
+  .stream-tag {
+    font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 12px; font-weight: 600; text-transform: capitalize;
+  }
+  .stream-tag.stream-arts { background: #fef3c7; color: #92400e; }
+  .stream-tag.stream-science { background: #d1fae5; color: #065f46; }
+  .stream-tag.stream-commerce { background: #dbeafe; color: #1e40af; }
+  .stream-tag.stream-computer { background: #ede9fe; color: #5b21b6; }
+  .stream-tag.stream-management { background: #fce7f3; color: #9d174d; }
+  .stream-tag.stream-education { background: #ffedd5; color: #9a3412; }
+  .stream-tag.stream-design { background: #e0e7ff; color: #3730a3; }
+  .stream-tag.stream-law { background: #fef9c3; color: #854d0e; }
+  .stream-tag.stream-engineering { background: #f3e8ff; color: #6b21a8; }
+  .stream-tag.stream-medical { background: #fce4ec; color: #880e4f; }
+
+  .programme-details { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .detail-chip {
+    font-size: 0.75rem; padding: 0.2rem 0.6rem;
+    background: #f5f5f5; color: #555; border-radius: 12px;
+  }
+
+  .loading { text-align: center; padding: 3rem; color: var(--text-muted); }
+
+  @media (max-width: 768px) {
+    .level-cards { grid-template-columns: 1fr; }
+    .uni-grid { grid-template-columns: 1fr; }
+    .uni-detail-header { flex-direction: column; }
+  }
+`

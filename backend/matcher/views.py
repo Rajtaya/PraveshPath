@@ -2,7 +2,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from students.models import StudentProfile
-from core.serializers import CollegeCourseDetailSerializer
+from core.serializers import UniversityCourseDetailSerializer
 from .engine import find_eligible_courses
 
 
@@ -14,7 +14,7 @@ def match_results(request, session_id):
         return Response({'error': 'Profile not found'}, status=status.HTTP_404_NOT_FOUND)
 
     eligible = find_eligible_courses(profile)
-    serializer = CollegeCourseDetailSerializer(eligible, many=True)
+    serializer = UniversityCourseDetailSerializer(eligible, many=True)
 
     return Response({
         'profile': {
@@ -52,7 +52,7 @@ def quick_match(request):
 
     profile = serializer.save()
     eligible = find_eligible_courses(profile)
-    result_serializer = CollegeCourseDetailSerializer(eligible, many=True)
+    result_serializer = UniversityCourseDetailSerializer(eligible, many=True)
 
     response_data = {
         'total_matches': eligible.count(),

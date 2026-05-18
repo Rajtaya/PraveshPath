@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import (
-    University, College, Course, CollegeCourse,
-    EligibilityCriteria, AdmissionCycle, RequiredDocument, CollegeCourseDocument,
+    University, Course, UniversityCourse,
+    EligibilityCriteria, AdmissionCycle, RequiredDocument, UniversityCourseDocument,
 )
 
 
@@ -12,18 +12,6 @@ class UniversitySerializer(serializers.ModelSerializer):
             'id', 'name', 'short_name', 'university_type', 'city',
             'district', 'website', 'admission_portal', 'established_year',
             'naac_grade', 'nirf_rank',
-        ]
-
-
-class CollegeSerializer(serializers.ModelSerializer):
-    university_name = serializers.CharField(source='university.short_name', read_only=True)
-
-    class Meta:
-        model = College
-        fields = [
-            'id', 'name', 'university', 'university_name', 'college_type',
-            'city', 'district', 'website', 'naac_grade', 'co_education',
-            'hostel_available',
         ]
 
 
@@ -67,31 +55,31 @@ class DocumentSerializer(serializers.ModelSerializer):
     description = serializers.CharField(source='document.description')
 
     class Meta:
-        model = CollegeCourseDocument
+        model = UniversityCourseDocument
         fields = ['name', 'description', 'is_mandatory']
 
 
-class CollegeCourseDetailSerializer(serializers.ModelSerializer):
-    college = CollegeSerializer()
+class UniversityCourseDetailSerializer(serializers.ModelSerializer):
+    university = UniversitySerializer()
     course = CourseSerializer()
     eligibility = EligibilityCriteriaSerializer(source='eligibility_criteria', many=True)
     admission_cycles = AdmissionCycleSerializer(many=True)
     documents = DocumentSerializer(source='required_documents', many=True)
 
     class Meta:
-        model = CollegeCourse
+        model = UniversityCourse
         fields = [
-            'id', 'college', 'course', 'total_seats', 'annual_fee',
+            'id', 'university', 'course', 'total_seats', 'annual_fee',
             'eligibility', 'admission_cycles', 'documents',
         ]
 
 
-class CollegeCourseListSerializer(serializers.ModelSerializer):
-    college_name = serializers.CharField(source='college.name')
-    college_city = serializers.CharField(source='college.city')
-    college_district = serializers.CharField(source='college.district')
-    college_type = serializers.CharField(source='college.college_type')
-    university_name = serializers.CharField(source='college.university.short_name')
+class UniversityCourseListSerializer(serializers.ModelSerializer):
+    university_name = serializers.CharField(source='university.name')
+    university_short_name = serializers.CharField(source='university.short_name')
+    university_district = serializers.CharField(source='university.district')
+    university_type = serializers.CharField(source='university.university_type')
+    university_website = serializers.URLField(source='university.website', read_only=True)
     course_name = serializers.CharField(source='course.name')
     course_stream = serializers.CharField(source='course.stream')
     course_level = serializers.CharField(source='course.level')
@@ -99,12 +87,12 @@ class CollegeCourseListSerializer(serializers.ModelSerializer):
     application_deadline = serializers.SerializerMethodField()
 
     class Meta:
-        model = CollegeCourse
+        model = UniversityCourse
         fields = [
-            'id', 'college_name', 'college_city', 'college_district',
-            'college_type', 'university_name', 'course_name', 'course_stream',
-            'course_level', 'total_seats', 'annual_fee', 'current_status',
-            'application_deadline',
+            'id', 'university_name', 'university_short_name',
+            'university_district', 'university_type', 'university_website',
+            'course_name', 'course_stream', 'course_level', 'total_seats',
+            'annual_fee', 'current_status', 'application_deadline',
         ]
 
     def get_current_status(self, obj):

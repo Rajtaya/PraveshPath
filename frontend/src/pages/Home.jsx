@@ -4,16 +4,16 @@ export default function Home() {
   return (
     <div className="home">
       <section className="hero">
-        <h1>Find Your Perfect College in Haryana</h1>
+        <h1>Find Your Perfect Programme in Haryana</h1>
         <p className="subtitle">
-          One profile. Instant eligibility matching across all Haryana universities and colleges.
+          One profile. Instant eligibility matching across all Haryana universities.
         </p>
         <div className="hero-actions">
           <Link to="/profile" className="btn btn-primary btn-lg">
             Check My Eligibility
           </Link>
           <Link to="/browse" className="btn btn-secondary btn-lg">
-            Browse Colleges
+            Browse Universities
           </Link>
         </div>
       </section>
@@ -28,7 +28,7 @@ export default function Home() {
           <div className="card feature-card">
             <div className="feature-icon">&#x2705;</div>
             <h3>Instant Matching</h3>
-            <p>See all colleges and courses you're eligible for immediately.</p>
+            <p>See all universities and programmes you're eligible for immediately.</p>
           </div>
           <div className="card feature-card">
             <div className="feature-icon">&#x1F4C5;</div>
@@ -38,7 +38,7 @@ export default function Home() {
           <div className="card feature-card">
             <div className="feature-icon">&#x1F517;</div>
             <h3>Direct Apply</h3>
-            <p>Get direct links to application portals for each college.</p>
+            <p>Get direct links to application portals for each university.</p>
           </div>
         </div>
       </section>
@@ -46,19 +46,19 @@ export default function Home() {
       <section className="stats">
         <div className="stat-grid">
           <div className="stat">
-            <span className="stat-number">10+</span>
+            <span className="stat-number">4</span>
             <span className="stat-label">Universities</span>
           </div>
           <div className="stat">
-            <span className="stat-number">500+</span>
-            <span className="stat-label">Colleges</span>
+            <span className="stat-number">115</span>
+            <span className="stat-label">Programmes</span>
           </div>
           <div className="stat">
-            <span className="stat-number">20+</span>
-            <span className="stat-label">Courses</span>
+            <span className="stat-number">129</span>
+            <span className="stat-label">Offerings</span>
           </div>
           <div className="stat">
-            <span className="stat-number">22</span>
+            <span className="stat-number">4</span>
             <span className="stat-label">Districts</span>
           </div>
         </div>

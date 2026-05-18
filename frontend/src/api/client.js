@@ -11,9 +11,11 @@ export const getMatchResults = (sessionId) => api.get(`/match/results/${sessionI
 export const quickMatch = (data) => api.post('/match/quick/', data);
 
 export const getUniversities = (params) => api.get('/universities/', { params });
-export const getColleges = (params) => api.get('/colleges/', { params });
 export const getCourses = (params) => api.get('/courses/', { params });
-export const getCollegeCourses = (params) => api.get('/college-courses/', { params });
-export const getCollegeCourseDetail = (id) => api.get(`/college-courses/${id}/`);
+export const getUniversityCourses = (params) => api.get('/university-courses/', { params });
+export const getUniversityCourseDetail = (id) => api.get(`/university-courses/${id}/`);
+
+export const getBrowseUniversities = (level) => api.get('/browse/universities/', { params: { level } });
+export const getUniversityProgrammes = (uniId, level) => api.get(`/browse/universities/${uniId}/programmes/`, { params: { level } });
 
 export default api;
