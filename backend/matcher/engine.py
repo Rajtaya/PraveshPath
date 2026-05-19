@@ -3,15 +3,23 @@ from django.db.models import Q, Prefetch
 from core.models import UniversityCourse, EligibilityCriteria, AdmissionCycle
 
 
+QUALIFICATION_ELIGIBLE_LEVELS = {
+    'higher_secondary': {'ug', 'diploma', 'certificate'},
+    'polytechnic_diploma': {'ug', 'diploma', 'certificate'},
+    'graduate': {'ug', 'pg', 'diploma', 'certificate'},
+    'post_graduate': {'ug', 'pg', 'phd', 'diploma', 'certificate'},
+}
+
+
 def find_eligible_courses(profile):
-    """
-    Given a StudentProfile, returns UniversityCourse queryset filtered by eligibility.
-    Checks: stream, 10th/12th marks, budget, location, domicile, board.
-    """
-    base_qs = UniversityCourse.objects.filter(
+    qualification = getattr(profile, 'highest_qualification', 'higher_secondary')
+    allowed_levels = QUALIFICATION_ELIGIBLE_LEVELS.get(qualification, {'ug', 'diploma', 'certificate'})
+
+    qs = UniversityCourse.objects.filter(
         is_active=True,
         university__is_active=True,
         course__is_active=True,
+        course__level__in=allowed_levels,
     ).select_related(
         'university', 'course'
     ).prefetch_related(
@@ -23,14 +31,8 @@ def find_eligible_courses(profile):
         'required_documents__document',
     )
 
-    if profile.preferred_stream:
-        base_qs = base_qs.filter(
-            Q(course__stream=profile.preferred_stream) |
-            Q(course__stream='other')
-        )
-
     if profile.max_annual_fee:
-        base_qs = base_qs.filter(
+        qs = qs.filter(
             Q(annual_fee__lte=profile.max_annual_fee) |
             Q(annual_fee__isnull=True)
         )
@@ -38,40 +40,17 @@ def find_eligible_courses(profile):
     if profile.preferred_districts:
         districts = [d.strip() for d in profile.preferred_districts.split(',') if d.strip()]
         if districts:
-            base_qs = base_qs.filter(university__district__in=districts)
+            qs = qs.filter(university__district__in=districts)
 
-    eligible_ids = []
-    for uc in base_qs:
+    results = []
+    for uc in qs:
         if _meets_criteria(uc, profile):
-            eligible_ids.append(uc.id)
+            results.append(uc)
 
-    return UniversityCourse.objects.filter(id__in=eligible_ids).select_related(
-        'university', 'course'
-    ).prefetch_related(
-        Prefetch(
-            'admission_cycles',
-            queryset=AdmissionCycle.objects.order_by('-academic_year')
-        ),
-        'eligibility_criteria',
-        'required_documents__document',
-    )
-
-
-QUALIFICATION_ELIGIBLE_LEVELS = {
-    'higher_secondary': {'ug', 'diploma', 'certificate'},
-    'polytechnic_diploma': {'ug', 'diploma', 'certificate'},
-    'graduate': {'ug', 'pg', 'diploma', 'certificate'},
-    'post_graduate': {'ug', 'pg', 'phd', 'diploma', 'certificate'},
-}
+    return results
 
 
 def _meets_criteria(university_course, profile):
-    course_level = university_course.course.level
-    qualification = getattr(profile, 'highest_qualification', 'higher_secondary')
-    allowed_levels = QUALIFICATION_ELIGIBLE_LEVELS.get(qualification, {'ug', 'diploma', 'certificate'})
-    if course_level not in allowed_levels:
-        return False
-
     criteria_set = university_course.eligibility_criteria.all()
 
     if not criteria_set:
@@ -134,7 +113,6 @@ KNOWN_SUBJECTS = {
 
 
 def _extract_subjects(text):
-    """Extract actual subject names from a requirement string, ignoring noise."""
     clean = re.sub(r'\+\s*(entrance|neet|jee|nata|hstes|icar).*', '', text, flags=re.IGNORECASE)
     clean = re.sub(r';\s*entrance.*', '', clean, flags=re.IGNORECASE)
     clean = re.sub(r'\(.*?\)', '', clean)

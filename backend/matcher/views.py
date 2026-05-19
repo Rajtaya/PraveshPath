@@ -30,7 +30,7 @@ def match_results(request):
             'graduation_percentage': str(profile.graduation_percentage) if profile.graduation_percentage else '',
             'category': profile.category,
         },
-        'total_matches': eligible.count(),
+        'total_matches': len(eligible),
         'results': serializer.data,
     })
 
@@ -38,7 +38,6 @@ def match_results(request):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def quick_match(request):
-    """Match without saving a full profile — for anonymous/quick lookups."""
     required = ['class_10_percentage', 'class_12_percentage', 'class_12_stream']
     for field in required:
         if field not in request.data:
@@ -55,13 +54,12 @@ def quick_match(request):
     if not serializer.is_valid():
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    # Create a temporary profile (no user attached) for matching, then delete it
     profile = serializer.save()
     eligible = find_eligible_courses(profile)
     result_serializer = UniversityCourseDetailSerializer(eligible, many=True)
 
     response_data = {
-        'total_matches': eligible.count(),
+        'total_matches': len(eligible),
         'results': result_serializer.data,
     }
 

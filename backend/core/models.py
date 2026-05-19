@@ -59,8 +59,8 @@ class Course(models.Model):
 
     name = models.CharField(max_length=255)
     short_name = models.CharField(max_length=30)
-    level = models.CharField(max_length=15, choices=Level.choices)
-    stream = models.CharField(max_length=15, choices=Stream.choices)
+    level = models.CharField(max_length=15, choices=Level.choices, db_index=True)
+    stream = models.CharField(max_length=15, choices=Stream.choices, db_index=True)
     duration_years = models.DecimalField(max_digits=3, decimal_places=1)
     description = models.TextField(blank=True)
     is_active = models.BooleanField(default=True)
