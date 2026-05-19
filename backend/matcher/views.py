@@ -15,7 +15,7 @@ def match_results(request):
     except StudentProfile.DoesNotExist:
         return Response({'error': 'Profile not found', 'code': 'profile_missing'}, status=status.HTTP_404_NOT_FOUND)
 
-    if not profile.class_12_stream or not profile.class_12_percentage:
+    if not profile.highest_qualification:
         return Response({'error': 'Please complete your profile first', 'code': 'profile_incomplete'}, status=status.HTTP_400_BAD_REQUEST)
 
     eligible = find_eligible_courses(profile)
@@ -24,8 +24,10 @@ def match_results(request):
     return Response({
         'profile': {
             'name': request.user.get_full_name(),
-            'stream': profile.class_12_stream,
-            '12th_percentage': str(profile.class_12_percentage),
+            'highest_qualification': profile.get_highest_qualification_display(),
+            'stream': profile.class_12_stream or profile.graduation_stream or '',
+            '12th_percentage': str(profile.class_12_percentage) if profile.class_12_percentage else '',
+            'graduation_percentage': str(profile.graduation_percentage) if profile.graduation_percentage else '',
             'category': profile.category,
         },
         'total_matches': eligible.count(),

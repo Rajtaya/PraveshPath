@@ -18,6 +18,12 @@ class StudentProfile(models.Model):
         FEMALE = 'female', 'Female'
         OTHER = 'other', 'Other'
 
+    class Qualification(models.TextChoices):
+        HIGHER_SECONDARY = 'higher_secondary', 'Higher Secondary / 10+2'
+        POLYTECHNIC_DIPLOMA = 'polytechnic_diploma', 'Polytechnic Diploma'
+        GRADUATE = 'graduate', 'Graduate'
+        POST_GRADUATE = 'post_graduate', 'Post-Graduate'
+
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -29,6 +35,11 @@ class StudentProfile(models.Model):
     date_of_birth = models.DateField(null=True, blank=True)
     category = models.CharField(max_length=10, choices=Category.choices, default=Category.GENERAL)
 
+    highest_qualification = models.CharField(
+        max_length=25, choices=Qualification.choices,
+        default=Qualification.HIGHER_SECONDARY
+    )
+
     class_10_percentage = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     class_10_board = models.CharField(max_length=50, blank=True)
     class_12_percentage = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
@@ -38,10 +49,11 @@ class StudentProfile(models.Model):
         blank=True, help_text='Comma-separated subjects taken in 12th'
     )
 
+    graduation_percentage = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    graduation_stream = models.CharField(max_length=30, blank=True)
+    graduation_subject = models.CharField(max_length=100, blank=True)
+
     preferred_stream = models.CharField(max_length=15, choices=Course.Stream.choices, blank=True)
-    preferred_level = models.CharField(
-        max_length=15, choices=Course.Level.choices, default=Course.Level.UG
-    )
     preferred_districts = models.TextField(
         blank=True, help_text='Comma-separated preferred districts'
     )

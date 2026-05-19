@@ -23,9 +23,6 @@ def find_eligible_courses(profile):
         'required_documents__document',
     )
 
-    if profile.preferred_level:
-        base_qs = base_qs.filter(course__level=profile.preferred_level)
-
     if profile.preferred_stream:
         base_qs = base_qs.filter(
             Q(course__stream=profile.preferred_stream) |
@@ -60,7 +57,21 @@ def find_eligible_courses(profile):
     )
 
 
+QUALIFICATION_ELIGIBLE_LEVELS = {
+    'higher_secondary': {'ug', 'diploma', 'certificate'},
+    'polytechnic_diploma': {'ug', 'diploma', 'certificate'},
+    'graduate': {'ug', 'pg', 'diploma', 'certificate'},
+    'post_graduate': {'ug', 'pg', 'phd', 'diploma', 'certificate'},
+}
+
+
 def _meets_criteria(university_course, profile):
+    course_level = university_course.course.level
+    qualification = getattr(profile, 'highest_qualification', 'higher_secondary')
+    allowed_levels = QUALIFICATION_ELIGIBLE_LEVELS.get(qualification, {'ug', 'diploma', 'certificate'})
+    if course_level not in allowed_levels:
+        return False
+
     criteria_set = university_course.eligibility_criteria.all()
 
     if not criteria_set:
@@ -141,17 +152,23 @@ def _extract_subjects(text):
 
 
 def _check_single_criteria(criteria, profile):
-    if criteria.min_10th_percentage and profile.class_10_percentage < criteria.min_10th_percentage:
-        return False
+    if criteria.min_10th_percentage:
+        if not profile.class_10_percentage or profile.class_10_percentage < criteria.min_10th_percentage:
+            return False
 
-    if criteria.min_12th_percentage and profile.class_12_percentage < criteria.min_12th_percentage:
-        return False
+    if criteria.min_12th_percentage:
+        if not profile.class_12_percentage or profile.class_12_percentage < criteria.min_12th_percentage:
+            return False
 
     if criteria.required_stream and criteria.required_stream != profile.class_12_stream:
         return False
 
+    if criteria.min_graduation_percentage:
+        if not profile.graduation_percentage or profile.graduation_percentage < criteria.min_graduation_percentage:
+            return False
+
     if criteria.board_type != 'any':
-        student_board = profile.class_12_board.lower()
+        student_board = (profile.class_12_board or '').lower()
         if criteria.board_type not in student_board:
             return False
 

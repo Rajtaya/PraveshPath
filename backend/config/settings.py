@@ -128,6 +128,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:5173',
     'http://localhost:5174',
+    'http://localhost:5175',
 ]
 
 FRONTEND_URL = os.environ.get('FRONTEND_URL', '')

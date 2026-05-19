@@ -10,9 +10,11 @@ class StudentProfileSerializer(serializers.ModelSerializer):
         model = StudentProfile
         fields = [
             'id', 'full_name', 'email', 'phone', 'gender',
-            'date_of_birth', 'category', 'class_10_percentage', 'class_10_board',
+            'date_of_birth', 'category', 'highest_qualification',
+            'class_10_percentage', 'class_10_board',
             'class_12_percentage', 'class_12_board', 'class_12_stream',
-            'class_12_subjects', 'preferred_stream', 'preferred_level',
+            'class_12_subjects', 'graduation_percentage', 'graduation_stream',
+            'graduation_subject', 'preferred_stream',
             'preferred_districts', 'max_annual_fee', 'haryana_domicile',
             'created_at',
         ]

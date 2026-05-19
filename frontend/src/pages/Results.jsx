@@ -74,7 +74,8 @@ export default function Results() {
         <div>
           <h1>Your Eligible Programmes</h1>
           <p className="results-subtitle">
-            {data.profile.name} &middot; {data.profile.stream} &middot; {data.profile['12th_percentage']}%
+            {data.profile.name} &middot; {data.profile.highest_qualification}
+            {data.profile.stream ? ` · ${data.profile.stream}` : ''}
           </p>
         </div>
         <div className="match-stats">
