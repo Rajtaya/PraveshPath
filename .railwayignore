@@ -1,0 +1,9 @@
+Data */
+files */
+*.zip
+*.pdf
+*.sqlite3
+venv/
+node_modules/
+.docker/
+__pycache__/
