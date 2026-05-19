@@ -109,6 +109,14 @@ class EligibilityCriteria(models.Model):
     board_type = models.CharField(max_length=10, choices=BoardType.choices, default=BoardType.ANY)
     min_age = models.PositiveIntegerField(null=True, blank=True)
     max_age = models.PositiveIntegerField(null=True, blank=True)
+    min_graduation_percentage = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True,
+        help_text='Minimum graduation marks for PG eligibility'
+    )
+    required_graduation = models.TextField(
+        blank=True,
+        help_text='Required bachelor/master degree for PG admission'
+    )
     entrance_exam = models.CharField(max_length=100, blank=True)
     domicile_required = models.BooleanField(default=False)
     category_reservation = models.JSONField(

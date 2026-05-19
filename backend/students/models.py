@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from core.models import Course
 
@@ -17,19 +18,22 @@ class StudentProfile(models.Model):
         FEMALE = 'female', 'Female'
         OTHER = 'other', 'Other'
 
-    session_id = models.CharField(max_length=64, unique=True, db_index=True)
-    full_name = models.CharField(max_length=150)
-    email = models.EmailField(blank=True)
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='student_profile',
+        null=True, blank=True,
+    )
     phone = models.CharField(max_length=15, blank=True)
     gender = models.CharField(max_length=10, choices=Gender.choices, blank=True)
     date_of_birth = models.DateField(null=True, blank=True)
     category = models.CharField(max_length=10, choices=Category.choices, default=Category.GENERAL)
 
-    class_10_percentage = models.DecimalField(max_digits=5, decimal_places=2)
+    class_10_percentage = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     class_10_board = models.CharField(max_length=50, blank=True)
-    class_12_percentage = models.DecimalField(max_digits=5, decimal_places=2)
+    class_12_percentage = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     class_12_board = models.CharField(max_length=50, blank=True)
-    class_12_stream = models.CharField(max_length=15, choices=Course.Stream.choices)
+    class_12_stream = models.CharField(max_length=15, choices=Course.Stream.choices, blank=True)
     class_12_subjects = models.TextField(
         blank=True, help_text='Comma-separated subjects taken in 12th'
     )
@@ -48,4 +52,6 @@ class StudentProfile(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.full_name} ({self.session_id[:8]})"
+        if self.user:
+            return f"{self.user.get_full_name() or self.user.email}"
+        return f"Profile ({self.phone or self.pk})"

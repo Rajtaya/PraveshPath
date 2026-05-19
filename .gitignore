@@ -23,3 +23,15 @@ Thumbs.db
 
 # Media uploads
 media/
+
+# Data files
+Data /
+files */
+*.zip
+*.pdf
+
+# Handoff docs
+HANDOFF*.md
+
+# Static build
+backend/staticfiles/

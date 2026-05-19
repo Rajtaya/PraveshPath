@@ -1,5 +1,6 @@
 from rest_framework import viewsets, filters
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from django.db.models import Count, Q
 from django_filters.rest_framework import DjangoFilterBackend
@@ -13,6 +14,7 @@ from .serializers import (
 class UniversityViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = University.objects.filter(is_active=True)
     serializer_class = UniversitySerializer
+    permission_classes = [AllowAny]
     pagination_class = None
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['university_type', 'district']
@@ -22,6 +24,7 @@ class UniversityViewSet(viewsets.ReadOnlyModelViewSet):
 class CourseViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Course.objects.filter(is_active=True)
     serializer_class = CourseSerializer
+    permission_classes = [AllowAny]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['level', 'stream']
     search_fields = ['name', 'short_name']
@@ -31,6 +34,7 @@ class UniversityCourseViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = UniversityCourse.objects.filter(
         is_active=True
     ).select_related('university', 'course')
+    permission_classes = [AllowAny]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = [
         'course__stream', 'course__level', 'university__district',
@@ -46,6 +50,18 @@ class UniversityCourseViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
+def platform_stats(request):
+    return Response({
+        'universities': University.objects.filter(is_active=True).count(),
+        'programmes': Course.objects.filter(is_active=True).count(),
+        'offerings': UniversityCourse.objects.filter(is_active=True).count(),
+        'districts': University.objects.filter(is_active=True).values('district').distinct().count(),
+    })
+
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
 def universities_with_programmes(request):
     """Return universities that have courses at the given level, with programme list."""
     level = request.query_params.get('level', 'ug')
@@ -78,6 +94,7 @@ def universities_with_programmes(request):
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def university_programmes(request, uni_id):
     """Return programmes offered by a university for a given level."""
     level = request.query_params.get('level', 'ug')

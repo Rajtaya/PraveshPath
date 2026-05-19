@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { createProfile } from '../api/client'
+import { createProfile, getMyProfile } from '../api/client'
 
 const CLASS_12_STREAMS = [
   { value: 'science', label: 'Science' },
@@ -49,6 +49,33 @@ export default function ProfileWizard() {
     preferred_districts: '',
     max_annual_fee: '',
   })
+
+  const [profileLoaded, setProfileLoaded] = useState(false)
+
+  useEffect(() => {
+    getMyProfile()
+      .then(res => {
+        const p = res.data
+        const saved = {
+          full_name: p.full_name || '',
+          preferred_level: p.preferred_level || '',
+          class_10_percentage: p.class_10_percentage || '',
+          class_12_percentage: p.class_12_percentage || '',
+          class_12_stream: p.class_12_stream || '',
+          class_12_subjects: p.class_12_subjects || '',
+          graduation_stream: p.graduation_stream || '',
+          graduation_percentage: p.graduation_percentage || '',
+          graduation_subject: p.graduation_subject || '',
+          haryana_domicile: p.haryana_domicile !== undefined ? p.haryana_domicile : true,
+          preferred_districts: p.preferred_districts || '',
+          max_annual_fee: p.max_annual_fee || '',
+        }
+        setForm(saved)
+        if (saved.preferred_level && saved.class_12_percentage && saved.class_12_stream) setStep(4)
+        setProfileLoaded(true)
+      })
+      .catch(() => setProfileLoaded(true))
+  }, [])
 
   const isUG = form.preferred_level === 'ug'
   const isPG = form.preferred_level === 'pg'
@@ -106,13 +133,17 @@ export default function ProfileWizard() {
         delete payload.class_12_stream
         delete payload.class_12_subjects
       }
-      const res = await createProfile(payload)
-      navigate(`/results/${res.data.session_id}`)
+      await createProfile(payload)
+      navigate('/results')
     } catch (err) {
       setError(err.response?.data?.error || 'Something went wrong. Try again.')
     } finally {
       setLoading(false)
     }
+  }
+
+  if (!profileLoaded) {
+    return <div className="wizard"><div className="loading" style={{textAlign:'center',padding:'3rem',color:'var(--text-muted)'}}>Loading your profile...</div></div>
   }
 
   return (

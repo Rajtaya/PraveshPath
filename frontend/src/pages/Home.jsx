@@ -1,6 +1,14 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import api from '../api/client'
 
 export default function Home() {
+  const [stats, setStats] = useState({ universities: 0, programmes: 0, offerings: 0, districts: 0 })
+
+  useEffect(() => {
+    api.get('/stats/').then(res => setStats(res.data)).catch(() => {})
+  }, [])
+
   return (
     <div className="home">
       <section className="hero">
@@ -46,19 +54,19 @@ export default function Home() {
       <section className="stats">
         <div className="stat-grid">
           <div className="stat">
-            <span className="stat-number">4</span>
+            <span className="stat-number">{stats.universities}</span>
             <span className="stat-label">Universities</span>
           </div>
           <div className="stat">
-            <span className="stat-number">115</span>
+            <span className="stat-number">{stats.programmes}</span>
             <span className="stat-label">Programmes</span>
           </div>
           <div className="stat">
-            <span className="stat-number">129</span>
+            <span className="stat-number">{stats.offerings}</span>
             <span className="stat-label">Offerings</span>
           </div>
           <div className="stat">
-            <span className="stat-number">4</span>
+            <span className="stat-number">{stats.districts}</span>
             <span className="stat-label">Districts</span>
           </div>
         </div>

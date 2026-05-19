@@ -1,29 +1,34 @@
 import { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { getMatchResults } from '../api/client'
 
 export default function Results() {
-  const { sessionId } = useParams()
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [filter, setFilter] = useState({ stream: '', district: '', status: '', type: '', search: '' })
   const [activeUni, setActiveUni] = useState(null)
   const [selectedProg, setSelectedProg] = useState(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetch = async () => {
       try {
-        const res = await getMatchResults(sessionId)
+        const res = await getMatchResults()
         setData(res.data)
       } catch (err) {
+        const code = err.response?.data?.code
+        if (code === 'profile_missing' || code === 'profile_incomplete') {
+          navigate('/profile')
+          return
+        }
         setError(err.response?.data?.error || 'Failed to load results')
       } finally {
         setLoading(false)
       }
     }
     fetch()
-  }, [sessionId])
+  }, [])
 
   if (loading) return <div className="loading">Finding your matches...</div>
   if (error) return <div className="error-page"><p>{error}</p><Link to="/profile">Try Again</Link></div>

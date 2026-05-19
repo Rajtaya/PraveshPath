@@ -1,4 +1,5 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from students.models import StudentProfile
@@ -7,18 +8,22 @@ from .engine import find_eligible_courses
 
 
 @api_view(['GET'])
-def match_results(request, session_id):
+@permission_classes([IsAuthenticated])
+def match_results(request):
     try:
-        profile = StudentProfile.objects.get(session_id=session_id)
+        profile = request.user.student_profile
     except StudentProfile.DoesNotExist:
-        return Response({'error': 'Profile not found'}, status=status.HTTP_404_NOT_FOUND)
+        return Response({'error': 'Profile not found', 'code': 'profile_missing'}, status=status.HTTP_404_NOT_FOUND)
+
+    if not profile.class_12_stream or not profile.class_12_percentage:
+        return Response({'error': 'Please complete your profile first', 'code': 'profile_incomplete'}, status=status.HTTP_400_BAD_REQUEST)
 
     eligible = find_eligible_courses(profile)
     serializer = UniversityCourseDetailSerializer(eligible, many=True)
 
     return Response({
         'profile': {
-            'name': profile.full_name,
+            'name': request.user.get_full_name(),
             'stream': profile.class_12_stream,
             '12th_percentage': str(profile.class_12_percentage),
             'category': profile.category,
@@ -29,6 +34,7 @@ def match_results(request, session_id):
 
 
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def quick_match(request):
     """Match without saving a full profile — for anonymous/quick lookups."""
     required = ['class_10_percentage', 'class_12_percentage', 'class_12_stream']
@@ -40,16 +46,14 @@ def quick_match(request):
             )
 
     from students.serializers import StudentProfileSerializer
-    import uuid
 
     data = request.data.copy()
-    data['session_id'] = f"quick-{uuid.uuid4()}"
-    data.setdefault('full_name', 'Quick Search')
 
     serializer = StudentProfileSerializer(data=data)
     if not serializer.is_valid():
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    # Create a temporary profile (no user attached) for matching, then delete it
     profile = serializer.save()
     eligible = find_eligible_courses(profile)
     result_serializer = UniversityCourseDetailSerializer(eligible, many=True)

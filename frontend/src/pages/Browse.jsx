@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { getBrowseUniversities, getUniversityProgrammes } from '../api/client'
 
 export default function Browse() {
-  const [level, setLevel] = useState(null)
+  const [level, setLevel] = useState('ug')
   const [universities, setUniversities] = useState([])
   const [selectedUni, setSelectedUni] = useState(null)
   const [programmes, setProgrammes] = useState([])
@@ -10,7 +10,6 @@ export default function Browse() {
   const [uniSearch, setUniSearch] = useState('')
 
   useEffect(() => {
-    if (!level) return
     setLoading(true)
     setSelectedUni(null)
     setProgrammes([])
@@ -32,37 +31,15 @@ export default function Browse() {
     u.short_name.toLowerCase().includes(uniSearch.toLowerCase())
   )
 
-  if (!level) {
-    return (
-      <div className="browse-page">
-        <h1>Browse Universities & Programmes</h1>
-        <p className="browse-subtitle">What level of programme are you looking for?</p>
-        <div className="level-cards">
-          <div className="level-card" onClick={() => setLevel('ug')}>
-            <div className="level-icon">🎓</div>
-            <h2>Undergraduate (UG)</h2>
-            <p>B.A., B.Sc, B.Com, BCA, BBA, B.Ed and more</p>
-          </div>
-          <div className="level-card" onClick={() => setLevel('pg')}>
-            <div className="level-icon">📚</div>
-            <h2>Postgraduate (PG)</h2>
-            <p>M.A., M.Sc, M.Com, MCA, MBA and more</p>
-          </div>
-        </div>
-        <style>{browseStyles}</style>
-      </div>
-    )
-  }
-
   if (!selectedUni) {
     return (
       <div className="browse-page">
-        <div className="browse-breadcrumb">
-          <span className="crumb clickable" onClick={() => setLevel(null)}>Level</span>
-          <span className="crumb-sep">/</span>
-          <span className="crumb active">{level.toUpperCase()} Universities</span>
+        <h1>Browse Universities & Programmes</h1>
+
+        <div className="level-toggle">
+          <button className={`toggle-btn ${level === 'ug' ? 'active' : ''}`} onClick={() => setLevel('ug')}>Undergraduate (UG)</button>
+          <button className={`toggle-btn ${level === 'pg' ? 'active' : ''}`} onClick={() => setLevel('pg')}>Postgraduate (PG)</button>
         </div>
-        <h1>{level.toUpperCase()} Programmes — Select University</h1>
 
         <input
           type="text"
@@ -105,8 +82,6 @@ export default function Browse() {
   return (
     <div className="browse-page">
       <div className="browse-breadcrumb">
-        <span className="crumb clickable" onClick={() => setLevel(null)}>Level</span>
-        <span className="crumb-sep">/</span>
         <span className="crumb clickable" onClick={() => setSelectedUni(null)}>{level.toUpperCase()} Universities</span>
         <span className="crumb-sep">/</span>
         <span className="crumb active">{selectedUni.short_name}</span>
@@ -161,7 +136,18 @@ export default function Browse() {
 
 const browseStyles = `
   .browse-page h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
-  .browse-subtitle { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 2rem; }
+  .level-toggle {
+    display: flex; gap: 0; margin-bottom: 1.5rem;
+    border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; width: fit-content;
+  }
+  .toggle-btn {
+    padding: 0.55rem 1.5rem; font-size: 0.9rem; font-weight: 600;
+    border: none; background: #fff; color: var(--text-muted); cursor: pointer;
+    transition: all 0.15s;
+  }
+  .toggle-btn:not(:last-child) { border-right: 1px solid var(--border); }
+  .toggle-btn.active { background: var(--primary); color: #fff; }
+  .toggle-btn:hover:not(.active) { background: #f5f5f5; }
 
   .browse-breadcrumb { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 1.25rem; font-size: 0.85rem; }
   .crumb { color: var(--text-muted); }
@@ -169,17 +155,6 @@ const browseStyles = `
   .crumb.clickable:hover { text-decoration: underline; }
   .crumb.active { color: var(--text); font-weight: 600; }
   .crumb-sep { color: var(--border); }
-
-  .level-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 700px; }
-  .level-card {
-    background: #fff; border: 2px solid var(--border); border-radius: var(--radius);
-    padding: 2.5rem 2rem; text-align: center; cursor: pointer;
-    transition: all 0.2s;
-  }
-  .level-card:hover { border-color: var(--primary); box-shadow: var(--shadow-md); transform: translateY(-2px); }
-  .level-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-  .level-card h2 { font-size: 1.3rem; margin-bottom: 0.5rem; }
-  .level-card p { color: var(--text-muted); font-size: 0.9rem; }
 
   .search-input {
     width: 100%; max-width: 400px; padding: 0.7rem 1rem;
@@ -212,12 +187,12 @@ const browseStyles = `
   }
   .btn-outline:hover { background: var(--primary); color: #fff; }
 
-  .programme-list { display: flex; flex-direction: column; gap: 1rem; }
-  .programme-card { transition: box-shadow 0.2s; }
+  .programme-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1rem; }
+  .programme-card { transition: box-shadow 0.2s; display: flex; flex-direction: column; }
   .programme-card:hover { box-shadow: var(--shadow-md); }
   .programme-card-header { margin-bottom: 0.5rem; }
-  .programme-name-row { display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; margin-bottom: 0.4rem; }
-  .programme-name-row h3 { font-size: 1rem; margin: 0; flex: 1; }
+  .programme-name-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.4rem; }
+  .programme-name-row h3 { font-size: 0.95rem; margin: 0; flex: 1; line-height: 1.35; }
   .programme-meta { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; font-size: 0.8rem; color: var(--text-muted); }
   .stream-tag {
     font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 12px; font-weight: 600; text-transform: capitalize;
@@ -244,6 +219,7 @@ const browseStyles = `
   @media (max-width: 768px) {
     .level-cards { grid-template-columns: 1fr; }
     .uni-grid { grid-template-columns: 1fr; }
+    .programme-list { grid-template-columns: 1fr; }
     .uni-detail-header { flex-direction: column; }
   }
 `
