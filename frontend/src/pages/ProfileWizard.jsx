@@ -28,7 +28,6 @@ const GRADUATION_STREAMS = [
   { value: 'other', label: 'Other' },
 ]
 
-
 const SUBJECTS_BY_STREAM = {
   science: [
     'Physics', 'Chemistry', 'Mathematics', 'Biology',
@@ -54,6 +53,11 @@ const DISTRICTS = [
   'Panipat', 'Rewari', 'Rohtak', 'Sirsa', 'Sonipat', 'Yamunanagar',
 ]
 
+const STEP_ICONS = [
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></svg>,
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" /></svg>,
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>,
+]
 
 export default function ProfileWizard() {
   const navigate = useNavigate()
@@ -163,7 +167,15 @@ export default function ProfileWizard() {
   }
 
   if (!profileLoaded) {
-    return <div className="wizard"><div className="loading" style={{textAlign:'center',padding:'3rem',color:'var(--text-muted)'}}>Loading your profile...</div></div>
+    return (
+      <div className="wizard">
+        <div className="wizard-loading">
+          <div className="wizard-loading-spinner" />
+          <p>Loading your profile...</p>
+        </div>
+        <style>{wizardStyles}</style>
+      </div>
+    )
   }
 
   return (
@@ -172,23 +184,34 @@ export default function ProfileWizard() {
         <h1>Find Eligible Programmes</h1>
         <p>Fill your details to discover matching universities and programmes</p>
         <div className="steps">
-          {STEP_LABELS.map((_, i) => (
+          {STEP_LABELS.map((label, i) => (
             <div key={i} className="step-group">
-              <div className={`step-dot ${step >= i + 1 ? 'active' : ''}`}>{i + 1}</div>
-              {i < STEP_LABELS.length - 1 && <div className="step-line" />}
+              <div className={`step-item ${step > i + 1 ? 'done' : ''} ${step === i + 1 ? 'active' : ''}`}>
+                <div className="step-dot">
+                  {step > i + 1 ? (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                  ) : STEP_ICONS[i]}
+                </div>
+                <span className="step-label">{label}</span>
+              </div>
+              {i < STEP_LABELS.length - 1 && (
+                <div className={`step-connector ${step > i + 1 ? 'done' : ''}`} />
+              )}
             </div>
           ))}
         </div>
-        <div className="step-labels">
-          {STEP_LABELS.map(label => <span key={label}>{label}</span>)}
-        </div>
       </div>
 
-      {error && <div className="error-msg">{error}</div>}
+      {error && <div className="error-msg">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
+        </svg>
+        {error}
+      </div>}
 
       <div className="wizard-body card">
         {step === 1 && (
-          <div className="form-step">
+          <div className="form-step" style={{ animation: 'fadeInUp 0.3s ease' }}>
             <h2>Academic Information</h2>
             <div className="form-group">
               <label>Highest Qualification *</label>
@@ -248,25 +271,28 @@ export default function ProfileWizard() {
                       <div className="form-group">
                         <label>12th Subjects</label>
                         <div className="checkbox-grid">
-                          {SUBJECTS_BY_STREAM[form.class_12_stream].map(subj => (
-                            <label key={subj} className="checkbox-item">
-                              <input
-                                type="checkbox"
-                                checked={form.class_12_subjects.split(',').map(x => x.trim()).filter(Boolean).includes(subj)}
-                                onChange={e => {
-                                  const current = form.class_12_subjects
-                                    ? form.class_12_subjects.split(',').map(x => x.trim()).filter(Boolean)
-                                    : []
-                                  if (e.target.checked) {
-                                    update('class_12_subjects', [...current, subj].join(','))
-                                  } else {
-                                    update('class_12_subjects', current.filter(x => x !== subj).join(','))
-                                  }
-                                }}
-                              />
-                              <span>{subj}</span>
-                            </label>
-                          ))}
+                          {SUBJECTS_BY_STREAM[form.class_12_stream].map(subj => {
+                            const checked = form.class_12_subjects.split(',').map(x => x.trim()).filter(Boolean).includes(subj)
+                            return (
+                              <label key={subj} className={`checkbox-chip ${checked ? 'checked' : ''}`}>
+                                <input
+                                  type="checkbox"
+                                  checked={checked}
+                                  onChange={e => {
+                                    const current = form.class_12_subjects
+                                      ? form.class_12_subjects.split(',').map(x => x.trim()).filter(Boolean)
+                                      : []
+                                    if (e.target.checked) {
+                                      update('class_12_subjects', [...current, subj].join(','))
+                                    } else {
+                                      update('class_12_subjects', current.filter(x => x !== subj).join(','))
+                                    }
+                                  }}
+                                />
+                                <span>{subj}</span>
+                              </label>
+                            )
+                          })}
                         </div>
                         <small>Select subjects you studied in 12th for better matching</small>
                       </div>
@@ -340,30 +366,33 @@ export default function ProfileWizard() {
         )}
 
         {step === 2 && (
-          <div className="form-step">
+          <div className="form-step" style={{ animation: 'fadeInUp 0.3s ease' }}>
             <h2>Your Preferences</h2>
             <div className="form-group">
               <label>Preferred Districts</label>
               <div className="checkbox-grid">
-                {DISTRICTS.map(d => (
-                  <label key={d} className="checkbox-item">
-                    <input
-                      type="checkbox"
-                      checked={form.preferred_districts.split(',').map(x => x.trim()).includes(d)}
-                      onChange={e => {
-                        const current = form.preferred_districts
-                          ? form.preferred_districts.split(',').map(x => x.trim()).filter(Boolean)
-                          : []
-                        if (e.target.checked) {
-                          update('preferred_districts', [...current, d].join(','))
-                        } else {
-                          update('preferred_districts', current.filter(x => x !== d).join(','))
-                        }
-                      }}
-                    />
-                    <span>{d}</span>
-                  </label>
-                ))}
+                {DISTRICTS.map(d => {
+                  const checked = form.preferred_districts.split(',').map(x => x.trim()).includes(d)
+                  return (
+                    <label key={d} className={`checkbox-chip ${checked ? 'checked' : ''}`}>
+                      <input
+                        type="checkbox"
+                        checked={checked}
+                        onChange={e => {
+                          const current = form.preferred_districts
+                            ? form.preferred_districts.split(',').map(x => x.trim()).filter(Boolean)
+                            : []
+                          if (e.target.checked) {
+                            update('preferred_districts', [...current, d].join(','))
+                          } else {
+                            update('preferred_districts', current.filter(x => x !== d).join(','))
+                          }
+                        }}
+                      />
+                      <span>{d}</span>
+                    </label>
+                  )
+                })}
               </div>
               <small>Leave all unchecked to search all districts</small>
             </div>
@@ -381,7 +410,7 @@ export default function ProfileWizard() {
         )}
 
         {step === 3 && (
-          <div className="form-step">
+          <div className="form-step" style={{ animation: 'fadeInUp 0.3s ease' }}>
             <h2>Confirm Your Details</h2>
             <div className="summary-grid">
               <div className="summary-item">
@@ -459,66 +488,161 @@ export default function ProfileWizard() {
         <div className="wizard-actions">
           {step > 1 && (
             <button className="btn btn-secondary" onClick={() => setStep(s => s - 1)}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" /></svg>
               Back
             </button>
           )}
+          <div style={{ flex: 1 }} />
           {step < 3 ? (
             <button className="btn btn-primary" onClick={nextStep}>
               Next
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
             </button>
           ) : (
             <button className="btn btn-success btn-lg" onClick={submit} disabled={loading}>
-              {loading ? 'Finding matches...' : 'Find My Programmes'}
+              {loading ? (
+                <>
+                  <span className="wizard-loading-spinner small" />
+                  Finding matches...
+                </>
+              ) : (
+                <>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+                  Find My Programmes
+                </>
+              )}
             </button>
           )}
         </div>
       </div>
 
-      <style>{`
-        .wizard { max-width: 700px; margin: 0 auto; }
-        .wizard-header { text-align: center; margin-bottom: 2rem; }
-        .wizard-header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
-        .wizard-header p { color: var(--text-muted); }
-        .steps { display: flex; align-items: center; justify-content: center; margin: 1.5rem 0 0.5rem; gap: 0; }
-        .step-group { display: flex; align-items: center; }
-        .step-dot {
-          width: 36px; height: 36px; border-radius: 50%;
-          display: flex; align-items: center; justify-content: center;
-          background: var(--border); color: var(--text-muted);
-          font-weight: 600; font-size: 0.9rem;
-        }
-        .step-dot.active { background: var(--primary); color: white; }
-        .step-line { width: 50px; height: 2px; background: var(--border); }
-        .step-labels { display: flex; justify-content: center; gap: 2rem; font-size: 0.8rem; color: var(--text-muted); }
-        .form-step h2 { font-size: 1.3rem; margin-bottom: 1.5rem; }
-        .form-group { margin-bottom: 1.25rem; }
-        .form-group label { display: block; font-weight: 500; margin-bottom: 0.4rem; font-size: 0.9rem; }
-        .form-group input, .form-group select {
-          width: 100%; padding: 0.6rem 0.75rem;
-          border: 1px solid var(--border); border-radius: var(--radius);
-          font-size: 0.95rem; transition: border-color 0.2s;
-        }
-        .form-group input:focus, .form-group select:focus {
-          outline: none; border-color: var(--primary-light);
-          box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .checkbox-grid {
-          display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-          gap: 0.4rem; margin-top: 0.5rem;
-        }
-        .checkbox-item {
-          display: flex; align-items: center; gap: 0.4rem;
-          font-size: 0.85rem; cursor: pointer;
-        }
-        .form-group small { color: var(--text-muted); font-size: 0.8rem; margin-top: 0.3rem; display: block; }
-        .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .summary-item { display: flex; flex-direction: column; }
-        .summary-item .label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; }
-        .summary-item .value { font-weight: 600; font-size: 1rem; }
-        .wizard-actions { display: flex; justify-content: space-between; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
-        .error-msg { background: #fee2e2; color: #991b1b; padding: 0.75rem 1rem; border-radius: var(--radius); margin-bottom: 1rem; font-size: 0.9rem; }
-      `}</style>
+      <style>{wizardStyles}</style>
     </div>
   )
 }
+
+const wizardStyles = `
+  .wizard { max-width: 700px; margin: 0 auto; animation: fadeInUp 0.4s ease both; }
+  .wizard-header { text-align: center; margin-bottom: 2rem; }
+  .wizard-header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+  .wizard-header p { color: var(--text-muted); }
+
+  .steps { display: flex; align-items: flex-start; justify-content: center; margin: 2rem 0 0; gap: 0; }
+  .step-group { display: flex; align-items: flex-start; }
+  .step-item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; min-width: 90px; }
+  .step-dot {
+    width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: white; color: var(--text-light);
+    border: 2px solid var(--border);
+    transition: all var(--transition);
+  }
+  .step-item.active .step-dot {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(30, 64, 175, 0.15);
+  }
+  .step-item.done .step-dot {
+    background: var(--secondary);
+    color: white;
+    border-color: var(--secondary);
+  }
+  .step-label { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; }
+  .step-item.active .step-label { color: var(--primary); font-weight: 600; }
+  .step-item.done .step-label { color: var(--secondary); }
+  .step-connector {
+    width: 60px; height: 2px; background: var(--border);
+    margin-top: 21px;
+    transition: background var(--transition);
+  }
+  .step-connector.done { background: var(--secondary); }
+
+  .form-step h2 { font-size: 1.25rem; margin-bottom: 1.5rem; color: var(--text); }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-group label { display: block; font-weight: 500; margin-bottom: 0.4rem; font-size: 0.9rem; }
+  .form-group input, .form-group select {
+    width: 100%; padding: 0.65rem 0.85rem;
+    border: 1.5px solid var(--border); border-radius: var(--radius);
+    font-size: 0.95rem; transition: all var(--transition);
+    background: var(--bg);
+  }
+  .form-group input:focus, .form-group select:focus {
+    outline: none; border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    background: white;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .checkbox-grid {
+    display: flex; flex-wrap: wrap;
+    gap: 0.5rem; margin-top: 0.5rem;
+  }
+  .checkbox-chip {
+    display: flex; align-items: center; gap: 0.35rem;
+    padding: 0.35rem 0.75rem;
+    border: 1.5px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all var(--transition);
+    background: white;
+  }
+  .checkbox-chip:hover { border-color: var(--primary-light); }
+  .checkbox-chip.checked {
+    background: var(--primary-50);
+    border-color: var(--primary-light);
+    color: var(--primary);
+    font-weight: 600;
+  }
+  .checkbox-chip input { display: none; }
+
+  .form-group small { color: var(--text-muted); font-size: 0.8rem; margin-top: 0.4rem; display: block; }
+
+  .summary-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .summary-item {
+    display: flex; flex-direction: column;
+    padding: 0.75rem;
+    background: var(--bg);
+    border-radius: var(--radius);
+  }
+  .summary-item .label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem; }
+  .summary-item .value { font-weight: 600; font-size: 0.95rem; }
+
+  .wizard-actions {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
+  }
+
+  .error-msg {
+    background: #fef2f2; color: #991b1b; padding: 0.75rem 1rem;
+    border-radius: var(--radius); margin-bottom: 1rem; font-size: 0.9rem;
+    border: 1px solid #fecaca;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+
+  .wizard-loading {
+    text-align: center; padding: 4rem;
+    display: flex; flex-direction: column; align-items: center; gap: 1rem;
+    color: var(--text-muted);
+  }
+  .wizard-loading-spinner {
+    width: 32px; height: 32px;
+    border: 3px solid var(--border);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
+  .wizard-loading-spinner.small { width: 18px; height: 18px; border-width: 2px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  @media (max-width: 640px) {
+    .form-row { grid-template-columns: 1fr; }
+    .summary-grid { grid-template-columns: 1fr; }
+    .step-connector { width: 30px; }
+    .step-item { min-width: 70px; }
+    .step-label { font-size: 0.7rem; }
+  }
+`

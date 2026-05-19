@@ -12,3 +12,8 @@
   width: 100%;
   box-sizing: border-box;
 }
+
+.main-content--full {
+  max-width: 100%;
+  padding: 0;
+}

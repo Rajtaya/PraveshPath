@@ -30,8 +30,8 @@ export default function Results() {
     fetch()
   }, [])
 
-  if (loading) return <div className="loading">Finding your matches...</div>
-  if (error) return <div className="error-page"><p>{error}</p><Link to="/profile">Try Again</Link></div>
+  if (loading) return <div className="loading"><div className="loading-spinner" /><span>Finding your matches...</span></div>
+  if (error) return <div className="error-page"><p>{error}</p><Link to="/profile" className="btn btn-primary">Try Again</Link></div>
 
   const filtered = data.results.filter(item => {
     if (filter.stream && item.course.stream !== filter.stream) return false
@@ -198,14 +198,15 @@ export default function Results() {
       )}
 
       <style>{`
-        .results-page { max-width: 1200px; margin: 0 auto; }
+        .results-page { max-width: 1200px; margin: 0 auto; animation: fadeInUp 0.4s ease both; }
         .results-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
         .results-header h1 { font-size: 1.8rem; margin-bottom: 0.3rem; }
         .results-subtitle { color: var(--text-muted); }
         .match-stats { display: flex; gap: 0.75rem; }
         .stat-box {
-          text-align: center; background: #eff6ff; padding: 0.75rem 1.25rem;
-          border-radius: var(--radius); min-width: 80px;
+          text-align: center; background: var(--primary-50); padding: 0.75rem 1.25rem;
+          border-radius: var(--radius-lg); min-width: 80px;
+          border: 1px solid var(--primary-100);
         }
         .stat-num { display: block; font-size: 1.6rem; font-weight: 800; color: var(--primary); }
         .stat-label { font-size: 0.75rem; color: var(--text-muted); }
@@ -213,19 +214,22 @@ export default function Results() {
         .filter-search { margin-bottom: 0.75rem; }
         .search-input {
           width: 100%; padding: 0.65rem 1rem;
-          border: 1px solid var(--border); border-radius: var(--radius);
-          font-size: 0.95rem;
+          border: 1.5px solid var(--border); border-radius: var(--radius);
+          font-size: 0.95rem; background: white;
+          transition: all var(--transition);
         }
         .search-input:focus { outline: none; border-color: var(--primary-light); box-shadow: 0 0 0 3px rgba(59,130,246,0.1); }
         .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
         .filters select {
-          padding: 0.45rem 0.65rem; border: 1px solid var(--border);
+          padding: 0.45rem 0.65rem; border: 1.5px solid var(--border);
           border-radius: var(--radius); font-size: 0.82rem; background: white;
+          transition: all var(--transition); cursor: pointer;
         }
+        .filters select:focus { outline: none; border-color: var(--primary-light); }
         .clear-filters {
-          padding: 0.45rem 0.75rem; border: 1px solid #ef4444; background: #fef2f2;
+          padding: 0.45rem 0.75rem; border: 1.5px solid #ef4444; background: #fef2f2;
           color: #dc2626; border-radius: var(--radius); font-size: 0.82rem;
-          cursor: pointer; font-weight: 500;
+          cursor: pointer; font-weight: 500; transition: all var(--transition);
         }
         .clear-filters:hover { background: #fee2e2; }
         .filter-summary { margin-top: 0.5rem; font-size: 0.8rem; color: var(--text-muted); }
@@ -237,24 +241,24 @@ export default function Results() {
         }
         .uni-card {
           background: white;
-          border: 1px solid var(--border);
-          border-radius: 12px;
+          border: 1.5px solid var(--border);
+          border-radius: var(--radius-xl);
           padding: 1.5rem;
           cursor: pointer;
-          transition: all 0.2s;
+          transition: all var(--transition);
           display: flex;
           flex-direction: column;
           gap: 0.5rem;
         }
         .uni-card:hover {
           border-color: var(--primary);
-          box-shadow: 0 6px 20px rgba(59,130,246,0.15);
+          box-shadow: 0 8px 24px rgba(59,130,246,0.12);
           transform: translateY(-3px);
         }
         .uni-card__badge { display: flex; justify-content: flex-end; }
         .uni-card__type {
           font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
-          letter-spacing: 0.05em; padding: 0.2rem 0.6rem; border-radius: 10px;
+          letter-spacing: 0.05em; padding: 0.2rem 0.6rem; border-radius: 999px;
         }
         .badge-type-state { background: #dbeafe; color: #1e40af; }
         .badge-type-central { background: #fce7f3; color: #9d174d; }
@@ -290,12 +294,21 @@ export default function Results() {
           display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.25rem;
         }
         .uni-card__stream-tag {
-          font-size: 0.65rem; background: #f1f5f9; color: var(--text-muted);
-          padding: 0.15rem 0.45rem; border-radius: 6px; text-transform: capitalize;
+          font-size: 0.65rem; background: var(--bg); color: var(--text-muted);
+          padding: 0.15rem 0.5rem; border-radius: 999px; text-transform: capitalize;
         }
 
-        .loading { text-align: center; padding: 4rem; font-size: 1.2rem; color: var(--text-muted); }
-        .error-page { text-align: center; padding: 4rem; }
+        .loading {
+          text-align: center; padding: 4rem; font-size: 1.1rem; color: var(--text-muted);
+          display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+        }
+        .loading-spinner {
+          width: 32px; height: 32px;
+          border: 3px solid var(--border); border-top-color: var(--primary);
+          border-radius: 50%; animation: spin 0.6s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .error-page { text-align: center; padding: 4rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; }
         .no-results { text-align: center; padding: 3rem; color: var(--text-muted); }
       `}</style>
     </div>
@@ -401,8 +414,10 @@ function UniversityProgrammes({ group, onBack, selectedProg, setSelectedProg }) 
           background: none; border: none; color: var(--primary);
           font-size: 0.9rem; font-weight: 600; cursor: pointer;
           padding: 0.4rem 0; margin-bottom: 1rem;
+          display: flex; align-items: center; gap: 0.3rem;
+          transition: all var(--transition);
         }
-        .uni-progs__back:hover { text-decoration: underline; }
+        .uni-progs__back:hover { opacity: 0.8; }
 
         .uni-progs__header {
           display: flex; justify-content: space-between; align-items: flex-start;
@@ -427,29 +442,29 @@ function UniversityProgrammes({ group, onBack, selectedProg, setSelectedProg }) 
 
         .prog-card {
           background: white;
-          border: 1px solid var(--border);
-          border-radius: var(--radius);
+          border: 1.5px solid var(--border);
+          border-radius: var(--radius-lg);
           padding: 1.1rem;
           cursor: pointer;
-          transition: all 0.2s;
+          transition: all var(--transition);
           display: flex;
           flex-direction: column;
           gap: 0.5rem;
         }
         .prog-card:hover {
           border-color: var(--primary-light);
-          box-shadow: 0 4px 12px rgba(59,130,246,0.12);
+          box-shadow: 0 6px 16px rgba(59,130,246,0.1);
           transform: translateY(-2px);
         }
         .prog-card--selected {
           border-color: var(--primary);
-          box-shadow: 0 4px 16px rgba(59,130,246,0.18);
+          box-shadow: 0 6px 20px rgba(59,130,246,0.15);
         }
 
         .prog-card__top { display: flex; justify-content: space-between; align-items: center; }
         .prog-card__status {
           font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
-          letter-spacing: 0.04em; padding: 0.15rem 0.5rem; border-radius: 10px;
+          letter-spacing: 0.04em; padding: 0.15rem 0.5rem; border-radius: 999px;
         }
         .badge-open { background: #dcfce7; color: #166534; }
         .badge-upcoming { background: #fef9c3; color: #854d0e; }
@@ -598,10 +613,10 @@ function DetailModal({ item, onClose }) {
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .detail-modal {
-          background: white; border-radius: 12px;
+          background: white; border-radius: var(--radius-xl);
           max-width: 640px; width: 100%; max-height: 85vh;
           overflow-y: auto; padding: 2rem; position: relative;
-          box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+          box-shadow: var(--shadow-xl);
           animation: slideUp 0.2s ease;
         }
         @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
