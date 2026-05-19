@@ -40,7 +40,7 @@ api.interceptors.response.use(
         return Promise.reject(error);
       }
       try {
-        const res = await axios.post('${import.meta.env.VITE_API_URL || 'http://localhost:8000/api'}/students/auth/token/refresh/', { refresh });
+        const res = await axios.post(`${api.defaults.baseURL}/students/auth/token/refresh/`, { refresh });
         localStorage.setItem('access_token', res.data.access);
         processQueue(null, res.data.access);
         original.headers.Authorization = `Bearer ${res.data.access}`;
