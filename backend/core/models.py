@@ -117,7 +117,7 @@ class EligibilityCriteria(models.Model):
         blank=True,
         help_text='Required bachelor/master degree for PG admission'
     )
-    entrance_exam = models.CharField(max_length=100, blank=True)
+    entrance_exam = models.CharField(max_length=300, blank=True)
     domicile_required = models.BooleanField(default=False)
     category_reservation = models.JSONField(
         default=dict, blank=True,
