@@ -5,7 +5,7 @@ from django.http import JsonResponse
 
 def api_root(request):
     return JsonResponse({
-        'name': 'CED Platform API',
+        'name': 'PraveshPath API',
         'version': '1.0',
         'endpoints': {
             'auth': {

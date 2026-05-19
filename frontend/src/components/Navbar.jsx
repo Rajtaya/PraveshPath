@@ -18,7 +18,7 @@ export default function Navbar() {
       <div className="nav-container">
         <Link to="/" className="nav-brand">
           <span className="brand-icon">&#x1F393;</span>
-          <span>CED Platform</span>
+          <span>PraveshPath</span>
         </Link>
         <div className="nav-links">
           <Link to="/" className={isActive('/')}>Home</Link>
