@@ -19,7 +19,7 @@ class University(models.Model):
     established_year = models.PositiveIntegerField(null=True, blank=True)
     naac_grade = models.CharField(max_length=10, blank=True)
     nirf_rank = models.PositiveIntegerField(null=True, blank=True)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True, db_index=True)
 
     class Meta:
         verbose_name_plural = 'universities'
@@ -63,7 +63,7 @@ class Course(models.Model):
     stream = models.CharField(max_length=15, choices=Stream.choices, db_index=True)
     duration_years = models.DecimalField(max_digits=3, decimal_places=1)
     description = models.TextField(blank=True)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True, db_index=True)
 
     class Meta:
         ordering = ['name']
@@ -77,7 +77,7 @@ class UniversityCourse(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='universities')
     total_seats = models.PositiveIntegerField(null=True, blank=True)
     annual_fee = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True, db_index=True)
 
     class Meta:
         unique_together = ['university', 'course']
@@ -141,12 +141,12 @@ class AdmissionCycle(models.Model):
     university_course = models.ForeignKey(
         UniversityCourse, on_delete=models.CASCADE, related_name='admission_cycles'
     )
-    academic_year = models.CharField(max_length=9, help_text='e.g. 2026-2027')
+    academic_year = models.CharField(max_length=9, db_index=True, help_text='e.g. 2026-2027')
     application_start = models.DateField()
     application_end = models.DateField()
     application_link = models.URLField(blank=True)
     application_fee = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
-    status = models.CharField(max_length=15, choices=Status.choices, default=Status.UPCOMING)
+    status = models.CharField(max_length=15, choices=Status.choices, default=Status.UPCOMING, db_index=True)
     counselling_date = models.DateField(null=True, blank=True)
     merit_list_date = models.DateField(null=True, blank=True)
     notes = models.TextField(blank=True)

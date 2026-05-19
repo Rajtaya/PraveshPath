@@ -96,9 +96,15 @@ class UniversityCourseListSerializer(serializers.ModelSerializer):
         ]
 
     def get_current_status(self, obj):
+        cycles = getattr(obj, 'current_cycles', None)
+        if cycles is not None:
+            return cycles[0].status if cycles else 'unknown'
         cycle = obj.admission_cycles.filter(academic_year='2026-2027').first()
         return cycle.status if cycle else 'unknown'
 
     def get_application_deadline(self, obj):
+        cycles = getattr(obj, 'current_cycles', None)
+        if cycles is not None:
+            return cycles[0].application_end if cycles else None
         cycle = obj.admission_cycles.filter(academic_year='2026-2027').first()
         return cycle.application_end if cycle else None

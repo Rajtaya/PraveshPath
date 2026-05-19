@@ -2,9 +2,9 @@ from rest_framework import viewsets, filters
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from django.db.models import Count, Q
+from django.db.models import Count, Prefetch, Q
 from django_filters.rest_framework import DjangoFilterBackend
-from .models import University, Course, UniversityCourse
+from .models import University, Course, UniversityCourse, AdmissionCycle
 from .serializers import (
     UniversitySerializer, CourseSerializer,
     UniversityCourseListSerializer, UniversityCourseDetailSerializer,
@@ -33,7 +33,13 @@ class CourseViewSet(viewsets.ReadOnlyModelViewSet):
 class UniversityCourseViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = UniversityCourse.objects.filter(
         is_active=True
-    ).select_related('university', 'course')
+    ).select_related('university', 'course').prefetch_related(
+        Prefetch(
+            'admission_cycles',
+            queryset=AdmissionCycle.objects.filter(academic_year='2026-2027'),
+            to_attr='current_cycles',
+        ),
+    )
     permission_classes = [AllowAny]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = [
@@ -48,36 +54,53 @@ class UniversityCourseViewSet(viewsets.ReadOnlyModelViewSet):
             return UniversityCourseDetailSerializer
         return UniversityCourseListSerializer
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        if self.action == 'retrieve':
+            qs = qs.prefetch_related(
+                Prefetch(
+                    'admission_cycles',
+                    queryset=AdmissionCycle.objects.order_by('-academic_year'),
+                ),
+                'eligibility_criteria',
+                'required_documents__document',
+            )
+        return qs
+
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def platform_stats(request):
-    return Response({
-        'universities': University.objects.filter(is_active=True).count(),
-        'programmes': Course.objects.filter(is_active=True).count(),
-        'offerings': UniversityCourse.objects.filter(is_active=True).count(),
-        'districts': University.objects.filter(is_active=True).values('district').distinct().count(),
-    })
+    stats = University.objects.filter(is_active=True).aggregate(
+        universities=Count('id'),
+        districts=Count('district', distinct=True),
+    )
+    stats['programmes'] = Course.objects.filter(is_active=True).count()
+    stats['offerings'] = UniversityCourse.objects.filter(is_active=True).count()
+    return Response(stats)
 
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def universities_with_programmes(request):
-    """Return universities that have courses at the given level, with programme list."""
     level = request.query_params.get('level', 'ug')
     universities = University.objects.filter(
         is_active=True,
         offered_courses__course__level=level,
         offered_courses__is_active=True,
-    ).distinct()
+    ).distinct().prefetch_related(
+        Prefetch(
+            'offered_courses',
+            queryset=UniversityCourse.objects.filter(
+                is_active=True, course__level=level,
+            ).select_related('course'),
+            to_attr='level_courses',
+        ),
+    )
 
     results = []
     for uni in universities:
-        programmes = Course.objects.filter(
-            level=level,
-            universities__university=uni,
-            universities__is_active=True,
-        ).distinct().values_list('name', flat=True)
+        programmes = [uc.course.name for uc in uni.level_courses]
         results.append({
             'id': uni.id,
             'name': uni.name,
@@ -86,7 +109,7 @@ def universities_with_programmes(request):
             'district': uni.district,
             'website': uni.website,
             'programme_count': len(programmes),
-            'programmes': list(programmes),
+            'programmes': programmes,
         })
 
     results.sort(key=lambda x: (-x['programme_count'], x['name']))
@@ -96,20 +119,25 @@ def universities_with_programmes(request):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def university_programmes(request, uni_id):
-    """Return programmes offered by a university for a given level."""
     level = request.query_params.get('level', 'ug')
     uc_list = UniversityCourse.objects.filter(
         university_id=uni_id,
         is_active=True,
         course__level=level,
     ).select_related('course').prefetch_related(
-        'eligibility_criteria', 'admission_cycles',
+        'eligibility_criteria',
+        Prefetch(
+            'admission_cycles',
+            queryset=AdmissionCycle.objects.filter(academic_year='2026-2027'),
+            to_attr='current_cycles',
+        ),
     ).order_by('course__stream', 'course__name')
 
     results = []
     for uc in uc_list:
-        cycle = uc.admission_cycles.filter(academic_year='2026-2027').first()
-        criteria = uc.eligibility_criteria.first()
+        cycle = uc.current_cycles[0] if uc.current_cycles else None
+        criteria = uc.eligibility_criteria.all()
+        first_criteria = criteria[0] if criteria else None
         results.append({
             'id': uc.id,
             'course_name': uc.course.name,
@@ -117,7 +145,7 @@ def university_programmes(request, uni_id):
             'duration_years': str(uc.course.duration_years),
             'total_seats': uc.total_seats,
             'annual_fee': str(uc.annual_fee) if uc.annual_fee else None,
-            'entrance_exam': criteria.entrance_exam if criteria else '',
+            'entrance_exam': first_criteria.entrance_exam if first_criteria else '',
             'status': cycle.status if cycle else 'unknown',
             'application_end': str(cycle.application_end) if cycle else None,
         })
