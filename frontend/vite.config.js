@@ -8,12 +8,15 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['logo.png'],
+      devOptions: {
+        enabled: true,
+      },
       manifest: {
         name: 'PraveshPath',
         short_name: 'PraveshPath',
         description: 'Find university programmes you are eligible for in Haryana',
-        theme_color: '#2563eb',
-        background_color: '#ffffff',
+        theme_color: '#1e40af',
+        background_color: '#f8fafc',
         display: 'standalone',
         start_url: '/',
         scope: '/',
