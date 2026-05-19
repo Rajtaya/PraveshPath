@@ -29,6 +29,24 @@ const GRADUATION_STREAMS = [
 ]
 
 
+const SUBJECTS_BY_STREAM = {
+  science: [
+    'Physics', 'Chemistry', 'Mathematics', 'Biology',
+    'Computer Science', 'Biotechnology', 'English',
+    'Physical Education', 'Hindi', 'Economics',
+  ],
+  commerce: [
+    'Accountancy', 'Business Studies', 'Economics',
+    'Mathematics', 'English', 'Computer Science',
+    'Physical Education', 'Hindi',
+  ],
+  arts: [
+    'History', 'Geography', 'Political Science', 'Sociology',
+    'Psychology', 'Economics', 'English', 'Hindi', 'Sanskrit',
+    'Home Science', 'Physical Education', 'Mathematics',
+  ],
+}
+
 const DISTRICTS = [
   'Ambala', 'Bhiwani', 'Charkhi Dadri', 'Faridabad', 'Fatehabad',
   'Gurugram', 'Hisar', 'Jhajjar', 'Jind', 'Kaithal', 'Karnal',
@@ -67,7 +85,7 @@ export default function ProfileWizard() {
           highest_qualification: p.highest_qualification || '',
           class_12_percentage: p.class_12_percentage || '',
           class_12_stream: p.class_12_stream || '',
-          class_12_subjects: p.class_12_subjects || '',
+          class_12_subjects: (p.class_12_subjects || '').replace(/\bMath\b/g, 'Mathematics').replace(/\bMaths\b/g, 'Mathematics'),
           graduation_stream: p.graduation_stream || '',
           graduation_percentage: p.graduation_percentage || '',
           graduation_subject: p.graduation_subject || '',
@@ -214,7 +232,10 @@ export default function ProfileWizard() {
                         <label>12th Stream *</label>
                         <select
                           value={form.class_12_stream}
-                          onChange={e => update('class_12_stream', e.target.value)}
+                          onChange={e => {
+                            update('class_12_stream', e.target.value)
+                            update('class_12_subjects', '')
+                          }}
                         >
                           <option value="">Select stream</option>
                           {CLASS_12_STREAMS.map(s => (
@@ -223,15 +244,33 @@ export default function ProfileWizard() {
                         </select>
                       </div>
                     </div>
-                    <div className="form-group">
-                      <label>12th Subjects (comma-separated)</label>
-                      <input
-                        type="text"
-                        value={form.class_12_subjects}
-                        onChange={e => update('class_12_subjects', e.target.value)}
-                        placeholder="e.g. Physics, Chemistry, Math"
-                      />
-                    </div>
+                    {form.class_12_stream && SUBJECTS_BY_STREAM[form.class_12_stream] && (
+                      <div className="form-group">
+                        <label>12th Subjects</label>
+                        <div className="checkbox-grid">
+                          {SUBJECTS_BY_STREAM[form.class_12_stream].map(subj => (
+                            <label key={subj} className="checkbox-item">
+                              <input
+                                type="checkbox"
+                                checked={form.class_12_subjects.split(',').map(x => x.trim()).filter(Boolean).includes(subj)}
+                                onChange={e => {
+                                  const current = form.class_12_subjects
+                                    ? form.class_12_subjects.split(',').map(x => x.trim()).filter(Boolean)
+                                    : []
+                                  if (e.target.checked) {
+                                    update('class_12_subjects', [...current, subj].join(','))
+                                  } else {
+                                    update('class_12_subjects', current.filter(x => x !== subj).join(','))
+                                  }
+                                }}
+                              />
+                              <span>{subj}</span>
+                            </label>
+                          ))}
+                        </div>
+                        <small>Select subjects you studied in 12th for better matching</small>
+                      </div>
+                    )}
                   </>
                 )}
 
@@ -363,8 +402,14 @@ export default function ProfileWizard() {
                   </div>
                   <div className="summary-item">
                     <span className="label">12th Stream</span>
-                    <span className="value">{form.class_12_stream}</span>
+                    <span className="value">{CLASS_12_STREAMS.find(s => s.value === form.class_12_stream)?.label || form.class_12_stream}</span>
                   </div>
+                  {form.class_12_subjects && (
+                    <div className="summary-item" style={{gridColumn: '1 / -1'}}>
+                      <span className="label">12th Subjects</span>
+                      <span className="value">{form.class_12_subjects}</span>
+                    </div>
+                  )}
                 </>
               )}
               {hasDiploma && form.graduation_subject && (
