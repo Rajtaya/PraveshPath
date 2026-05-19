@@ -1,9 +1,10 @@
 from django.conf import settings as django_settings
 from django.contrib.auth import get_user_model
 from rest_framework import status
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view, permission_classes, throttle_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.throttling import AnonRateThrottle
 from rest_framework_simplejwt.tokens import RefreshToken
 from google.oauth2 import id_token
 from google.auth.transport import requests as google_requests
@@ -11,6 +12,10 @@ from google.auth.transport import requests as google_requests
 from .auth_serializers import RegisterSerializer, LoginSerializer, UserSerializer
 
 User = get_user_model()
+
+
+class AuthRateThrottle(AnonRateThrottle):
+    rate = '5/minute'
 
 
 def _get_tokens_for_user(user):
@@ -23,6 +28,7 @@ def _get_tokens_for_user(user):
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
+@throttle_classes([AuthRateThrottle])
 def register_view(request):
     serializer = RegisterSerializer(data=request.data)
     if serializer.is_valid():
@@ -37,6 +43,7 @@ def register_view(request):
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
+@throttle_classes([AuthRateThrottle])
 def login_view(request):
     serializer = LoginSerializer(data=request.data, context={'request': request})
     if serializer.is_valid():
@@ -57,6 +64,7 @@ def me_view(request):
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
+@throttle_classes([AuthRateThrottle])
 def google_login_view(request):
     credential = request.data.get('credential')
     if not credential:
@@ -72,6 +80,9 @@ def google_login_view(request):
         )
     except ValueError:
         return Response({'error': 'Invalid Google token.'}, status=status.HTTP_400_BAD_REQUEST)
+
+    if not idinfo.get('email_verified', False):
+        return Response({'error': 'Email not verified by Google.'}, status=status.HTTP_400_BAD_REQUEST)
 
     email = idinfo['email'].lower()
     full_name = idinfo.get('name', '')

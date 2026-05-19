@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from core.models import Course
 
@@ -40,16 +41,25 @@ class StudentProfile(models.Model):
         default=Qualification.HIGHER_SECONDARY
     )
 
-    class_10_percentage = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    class_10_percentage = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+    )
     class_10_board = models.CharField(max_length=50, blank=True)
-    class_12_percentage = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    class_12_percentage = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+    )
     class_12_board = models.CharField(max_length=50, blank=True)
     class_12_stream = models.CharField(max_length=15, choices=Course.Stream.choices, blank=True)
     class_12_subjects = models.TextField(
         blank=True, help_text='Comma-separated subjects taken in 12th'
     )
 
-    graduation_percentage = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    graduation_percentage = models.DecimalField(
+        max_digits=5, decimal_places=2, null=True, blank=True,
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+    )
     graduation_stream = models.CharField(max_length=30, blank=True)
     graduation_subject = models.CharField(max_length=100, blank=True)
 

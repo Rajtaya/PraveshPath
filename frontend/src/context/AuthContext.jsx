@@ -63,6 +63,9 @@ export function AuthProvider({ children }) {
 
   function logout() {
     clearTokens()
+    if ('caches' in window) {
+      caches.delete('api-cache')
+    }
   }
 
   return (

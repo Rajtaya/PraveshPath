@@ -1,6 +1,8 @@
-from rest_framework.decorators import api_view, permission_classes
+from decimal import Decimal, InvalidOperation
+from rest_framework.decorators import api_view, permission_classes, throttle_classes
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.throttling import AnonRateThrottle
 from rest_framework import status
 from students.models import StudentProfile
 from core.serializers import UniversityCourseDetailSerializer
@@ -35,8 +37,21 @@ def match_results(request):
     })
 
 
+def _safe_decimal(value, min_val=0, max_val=100):
+    if value is None or value == '':
+        return None
+    try:
+        d = Decimal(str(value))
+        if d < min_val or d > max_val:
+            return None
+        return d
+    except (InvalidOperation, ValueError):
+        return None
+
+
 @api_view(['POST'])
 @permission_classes([AllowAny])
+@throttle_classes([AnonRateThrottle])
 def quick_match(request):
     required = ['class_10_percentage', 'class_12_percentage', 'class_12_stream']
     for field in required:
@@ -46,22 +61,29 @@ def quick_match(request):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-    from students.serializers import StudentProfileSerializer
+    data = request.data
+    stream_choices = {c[0] for c in StudentProfile.Qualification.choices}
+    stream = data.get('class_12_stream', '')
 
-    data = request.data.copy()
+    profile = StudentProfile(
+        highest_qualification=data.get('highest_qualification', 'higher_secondary'),
+        class_10_percentage=_safe_decimal(data.get('class_10_percentage')),
+        class_12_percentage=_safe_decimal(data.get('class_12_percentage')),
+        class_12_stream=stream,
+        class_12_board=data.get('class_12_board', ''),
+        class_12_subjects=data.get('class_12_subjects', ''),
+        graduation_percentage=_safe_decimal(data.get('graduation_percentage')),
+        graduation_stream=data.get('graduation_stream', ''),
+        category=data.get('category', 'general'),
+        haryana_domicile=data.get('haryana_domicile', True),
+        preferred_districts=data.get('preferred_districts', ''),
+        max_annual_fee=_safe_decimal(data.get('max_annual_fee'), 0, 99999999),
+    )
 
-    serializer = StudentProfileSerializer(data=data)
-    if not serializer.is_valid():
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    profile = serializer.save()
     eligible = find_eligible_courses(profile)
     result_serializer = UniversityCourseDetailSerializer(eligible, many=True)
 
-    response_data = {
+    return Response({
         'total_matches': len(eligible),
         'results': result_serializer.data,
-    }
-
-    profile.delete()
-    return Response(response_data)
+    })
