@@ -17,7 +17,7 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="nav-container">
         <Link to="/" className="nav-brand">
-          <span className="brand-icon">&#x1F393;</span>
+          <img src="/logo.png" alt="PraveshPath" className="brand-logo" />
           <span>PraveshPath</span>
         </Link>
         <div className="nav-links">
@@ -62,7 +62,7 @@ export default function Navbar() {
           color: var(--primary-dark);
           text-decoration: none;
         }
-        .brand-icon { font-size: 1.5rem; }
+        .brand-logo { height: 36px; width: auto; }
         .nav-links { display: flex; gap: 0.25rem; align-items: center; }
         .nav-link {
           padding: 0.5rem 1rem;
