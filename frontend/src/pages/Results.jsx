@@ -609,6 +609,7 @@ function DetailModal({ item, onClose }) {
           background: rgba(0,0,0,0.45); z-index: 200;
           display: flex; align-items: center; justify-content: center;
           padding: 1.5rem; animation: fadeIn 0.15s ease;
+          overflow-y: auto; -webkit-overflow-scrolling: touch;
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
@@ -618,6 +619,17 @@ function DetailModal({ item, onClose }) {
           overflow-y: auto; padding: 2rem; position: relative;
           box-shadow: var(--shadow-xl);
           animation: slideUp 0.2s ease;
+        }
+        @media (max-width: 600px) {
+          .detail-overlay {
+            align-items: flex-start;
+            padding: 1rem 0.75rem;
+          }
+          .detail-modal {
+            max-height: none;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+          }
         }
         @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
