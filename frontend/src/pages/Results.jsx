@@ -514,6 +514,7 @@ function DetailModal({ item, onClose }) {
   return (
     <div className="detail-overlay" onClick={onClose}>
       <div className="detail-modal" onClick={e => e.stopPropagation()}>
+        <div className="detail-handle" onClick={onClose}><span /></div>
         <button className="detail-close" onClick={onClose}>&times;</button>
 
         <div className="detail-modal__header">
@@ -609,7 +610,6 @@ function DetailModal({ item, onClose }) {
           background: rgba(0,0,0,0.45); z-index: 200;
           display: flex; align-items: center; justify-content: center;
           padding: 1.5rem; animation: fadeIn 0.15s ease;
-          overflow-y: auto; -webkit-overflow-scrolling: touch;
         }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
@@ -620,18 +620,33 @@ function DetailModal({ item, onClose }) {
           box-shadow: var(--shadow-xl);
           animation: slideUp 0.2s ease;
         }
+        .detail-handle { display: none; }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
         @media (max-width: 600px) {
           .detail-overlay {
-            align-items: flex-start;
-            padding: 1rem 0.75rem;
+            align-items: flex-end;
+            padding: 0;
+            animation: fadeIn 0.2s ease;
           }
           .detail-modal {
-            max-height: none;
-            border-radius: var(--radius);
-            padding: 1.5rem;
+            max-height: 92vh;
+            max-width: 100%;
+            border-radius: 1rem 1rem 0 0;
+            padding: 0.5rem 1.25rem 2rem;
+            animation: sheetUp 0.3s cubic-bezier(0.32, 0.72, 0, 1);
           }
+          @keyframes sheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+          .detail-handle {
+            display: flex; justify-content: center; padding: 0.5rem 0 0.25rem;
+            cursor: pointer;
+          }
+          .detail-handle span {
+            width: 36px; height: 4px; border-radius: 2px;
+            background: var(--border, #d1d5db);
+          }
+          .detail-close { display: none; }
         }
-        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
         .detail-close {
           position: absolute; top: 1rem; right: 1rem;
