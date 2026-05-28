@@ -625,27 +625,47 @@ function DetailModal({ item, onClose }) {
 
         @media (max-width: 600px) {
           .detail-overlay {
-            align-items: flex-end;
+            background: white;
             padding: 0;
-            animation: fadeIn 0.2s ease;
+            display: block;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            animation: screenSlide 0.25s ease;
           }
+          @keyframes screenSlide { from { transform: translateX(100%); } to { transform: translateX(0); } }
           .detail-modal {
-            max-height: 92vh;
-            max-width: 100%;
-            border-radius: 1rem 1rem 0 0;
-            padding: 0.5rem 1.25rem 2rem;
-            animation: sheetUp 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+            max-height: none; max-width: 100%;
+            border-radius: 0;
+            padding: 0 1.25rem 2rem;
+            box-shadow: none;
+            animation: none;
           }
-          @keyframes sheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
           .detail-handle {
-            display: flex; justify-content: center; padding: 0.5rem 0 0.25rem;
+            display: flex; align-items: center; gap: 0.75rem;
+            padding: 0.9rem 1.25rem;
+            position: sticky; top: 0; z-index: 10;
+            background: white;
+            border-bottom: 1px solid var(--border, #e5e7eb);
             cursor: pointer;
           }
           .detail-handle span {
-            width: 36px; height: 4px; border-radius: 2px;
-            background: var(--border, #d1d5db);
+            width: 20px; height: 20px; position: relative;
+          }
+          .detail-handle span::before,
+          .detail-handle span::after {
+            content: ''; position: absolute; left: 3px;
+            width: 10px; height: 2px; background: var(--text, #1f2937);
+            border-radius: 1px;
+          }
+          .detail-handle span::before { top: 7px; transform: rotate(-40deg); }
+          .detail-handle span::after { top: 12px; transform: rotate(40deg); }
+          .detail-handle::after {
+            content: 'Course Details';
+            font-size: 0.95rem; font-weight: 600;
+            color: var(--text, #1f2937);
           }
           .detail-close { display: none; }
+          .detail-modal__header { padding-top: 1rem; }
         }
 
         .detail-close {
