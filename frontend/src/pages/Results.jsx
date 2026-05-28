@@ -412,15 +412,17 @@ function UniversityProgrammes({ group, onBack, selectedProg, setSelectedProg }) 
 
       <style>{`
         .uni-progs__back {
-          display: inline-flex; align-items: center; gap: 0.4rem;
-          background: var(--primary-light, #eff6ff); border: none;
-          color: var(--primary); font-size: 0.9rem; font-weight: 600;
-          cursor: pointer; padding: 0.55rem 1rem 0.55rem 0.7rem;
-          margin-bottom: 1.25rem; border-radius: 999px;
+          display: inline-flex; align-items: center; gap: 0.35rem;
+          background: #eef2ff; border: 1.5px solid #c7d2fe;
+          color: #1a56db; font-size: 0.95rem; font-weight: 700;
+          cursor: pointer; padding: 0.6rem 1.15rem 0.6rem 0.75rem;
+          margin-bottom: 1.25rem; border-radius: 12px;
           transition: all 0.15s ease;
+          box-shadow: 0 1px 3px rgba(26,86,219,0.1);
         }
-        .uni-progs__back:hover { background: var(--primary); color: white; }
+        .uni-progs__back:hover { background: #1a56db; color: white; border-color: #1a56db; }
         .uni-progs__back:hover svg { color: white; }
+        .uni-progs__back:active { transform: scale(0.97); }
 
         .uni-progs__header {
           display: flex; justify-content: space-between; align-items: flex-start;
