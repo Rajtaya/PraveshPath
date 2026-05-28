@@ -69,6 +69,7 @@ export default function Results() {
   const streamSet = group => [...new Set(group.courses.map(c => c.course.stream))]
 
   return (
+  <>
     <div className="results-page">
       <div className="results-header">
         <div>
@@ -190,13 +191,6 @@ export default function Results() {
         />
       )}
 
-      {selectedProg && (
-        <DetailModal
-          item={filtered.find(i => i.id === selectedProg)}
-          onClose={() => setSelectedProg(null)}
-        />
-      )}
-
       <style>{`
         .results-page { max-width: 1200px; margin: 0 auto; animation: fadeInUp 0.4s ease both; }
         .results-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
@@ -312,6 +306,14 @@ export default function Results() {
         .no-results { text-align: center; padding: 3rem; color: var(--text-muted); }
       `}</style>
     </div>
+
+    {selectedProg && (
+      <DetailModal
+        item={filtered.find(i => i.id === selectedProg)}
+        onClose={() => setSelectedProg(null)}
+      />
+    )}
+  </>
   )
 }
 
