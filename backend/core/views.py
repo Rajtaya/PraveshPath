@@ -84,15 +84,16 @@ def platform_stats(request):
 @permission_classes([AllowAny])
 def universities_with_programmes(request):
     level = request.query_params.get('level', 'ug')
+    level_filter = [level] if level == 'ug' else ['pg', 'diploma', 'certificate', 'phd']
     universities = University.objects.filter(
         is_active=True,
-        offered_courses__course__level=level,
+        offered_courses__course__level__in=level_filter,
         offered_courses__is_active=True,
     ).distinct().prefetch_related(
         Prefetch(
             'offered_courses',
             queryset=UniversityCourse.objects.filter(
-                is_active=True, course__level=level,
+                is_active=True, course__level__in=level_filter,
             ).select_related('course'),
             to_attr='level_courses',
         ),
@@ -120,10 +121,11 @@ def universities_with_programmes(request):
 @permission_classes([AllowAny])
 def university_programmes(request, uni_id):
     level = request.query_params.get('level', 'ug')
+    level_filter = [level] if level == 'ug' else ['pg', 'diploma', 'certificate', 'phd']
     uc_list = UniversityCourse.objects.filter(
         university_id=uni_id,
         is_active=True,
-        course__level=level,
+        course__level__in=level_filter,
     ).select_related('course').prefetch_related(
         'eligibility_criteria',
         Prefetch(
