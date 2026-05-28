@@ -1,0 +1,5430 @@
+[
+  {
+    "model": "core.course",
+    "pk": 419,
+    "fields": {
+      "name": "M.A. English (2 Year)",
+      "short_name": "M.A. English",
+      "level": "pg",
+      "stream": "arts",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 880,
+    "fields": {
+      "university": 48,
+      "course": 419,
+      "total_seats": 120,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 880,
+    "fields": {
+      "university_course": 880,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "3-Year Bachelor’s Degree with at least 50 percent marks or equivalent CGPA in aggregate. OR 3-Year Bachelor’s Degree with English as a Major or Minor subject and with at least 50 percent marks or equivalent CGPA in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 880,
+    "fields": {
+      "university_course": 880,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 420,
+    "fields": {
+      "name": "Certificate Programme in Translation (English-Hindi / Hindi-English) (6 Months)",
+      "short_name": "Cert. Prog. in Translation (En",
+      "level": "certificate",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 881,
+    "fields": {
+      "university": 48,
+      "course": 420,
+      "total_seats": 20,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 881,
+    "fields": {
+      "university_course": 881,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "Bachelor’s Degree examination from this University or an examination recognized as equivalent thereto.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 881,
+    "fields": {
+      "university_course": 881,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-28",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 421,
+    "fields": {
+      "name": "Certificate Course in French (Evening) (1 Year)",
+      "short_name": "Certificate Course in French",
+      "level": "certificate",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 882,
+    "fields": {
+      "university": 48,
+      "course": 421,
+      "total_seats": 100,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 882,
+    "fields": {
+      "university_course": 882,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "Senior Secondary Certificate (10+2) Examination.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 882,
+    "fields": {
+      "university_course": 882,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-28",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 422,
+    "fields": {
+      "name": "Diploma Course in French (Evening) (1 Year)",
+      "short_name": "Diploma Course in French",
+      "level": "diploma",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 883,
+    "fields": {
+      "university": 48,
+      "course": 422,
+      "total_seats": 15,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 883,
+    "fields": {
+      "university_course": 883,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "Certificate Course in French. OR Pre-university or B.A. (Pass) Part-I with French as compulsory/elective subject.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 883,
+    "fields": {
+      "university_course": 883,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-28",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 423,
+    "fields": {
+      "name": "Advanced Diploma in French (Evening) (1 Year)",
+      "short_name": "Advanced Diploma in French",
+      "level": "diploma",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 884,
+    "fields": {
+      "university": 48,
+      "course": 423,
+      "total_seats": 10,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 884,
+    "fields": {
+      "university_course": 884,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "Diploma in French.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 884,
+    "fields": {
+      "university_course": 884,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-28",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 424,
+    "fields": {
+      "name": "Certificate Course in German (Evening) (1 Year)",
+      "short_name": "Certificate Course in German",
+      "level": "certificate",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 885,
+    "fields": {
+      "university": 48,
+      "course": 424,
+      "total_seats": 100,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 885,
+    "fields": {
+      "university_course": 885,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "Senior Secondary Certificate (10+2) Examination.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 885,
+    "fields": {
+      "university_course": 885,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-28",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 425,
+    "fields": {
+      "name": "Diploma Course in German (Evening) (1 Year)",
+      "short_name": "Diploma Course in German",
+      "level": "diploma",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 886,
+    "fields": {
+      "university": 48,
+      "course": 425,
+      "total_seats": 10,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 886,
+    "fields": {
+      "university_course": 886,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "Certificate Course in German. OR Pre-university or B.A. (Pass) Part-I with German as compulsory/elective subject.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 886,
+    "fields": {
+      "university_course": 886,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-28",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 426,
+    "fields": {
+      "name": "Advanced Diploma in German (Evening) (1 Year)",
+      "short_name": "Advanced Diploma in German",
+      "level": "diploma",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 887,
+    "fields": {
+      "university": 48,
+      "course": 426,
+      "total_seats": 10,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 887,
+    "fields": {
+      "university_course": 887,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "Diploma in German.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 887,
+    "fields": {
+      "university_course": 887,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-28",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 427,
+    "fields": {
+      "name": "M.A. Hindi (2 Year)",
+      "short_name": "M.A. Hindi",
+      "level": "pg",
+      "stream": "arts",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 888,
+    "fields": {
+      "university": 48,
+      "course": 427,
+      "total_seats": 60,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 888,
+    "fields": {
+      "university_course": 888,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "45.0",
+      "required_graduation": "B.A.(Hons) in Hindi OR Bachelor's Degree in any discipline with at least 50% marks in aggregate or 45% marks in the subject of Hindi/Sanskrit (compulsory/elective)/Functional Hindi/prabhakar. OR Shastri Examination (new scheme) of three year duration with 45% marks in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 888,
+    "fields": {
+      "university_course": 888,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 428,
+    "fields": {
+      "name": "M.Lib. & Inf. Sc. (2 Year)",
+      "short_name": "M.Lib. & Inf. Sc.",
+      "level": "pg",
+      "stream": "arts",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 889,
+    "fields": {
+      "university": 48,
+      "course": 428,
+      "total_seats": 40,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 889,
+    "fields": {
+      "university_course": 889,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "45.0",
+      "required_graduation": "Bachelor’s or Master’s Degree Examination in any discipline from this university or an examination recognized as equivalent thereto with at least 45% marks in aggregate. The degree with the higher percentage will be considered for admission. Note In service or deputed candidates are required to fill in an additional Form which is available free of cost with Chairperson, Department of Library & Information Sc. can be obtained through the e-mail (chairperson.lis@kuk.ac.in). Applicants will not be ",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 889,
+    "fields": {
+      "university_course": 889,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 429,
+    "fields": {
+      "name": "M.A. Panjabi (2 Year)",
+      "short_name": "M.A. Panjabi",
+      "level": "pg",
+      "stream": "arts",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 890,
+    "fields": {
+      "university": 48,
+      "course": 429,
+      "total_seats": 60,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 890,
+    "fields": {
+      "university_course": 890,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "4-Year B.A(Honours)/B.Sc. (Honours)/B.Com (Honours) or B.A(Honours with Research)/B.Sc. (Honours with Research)/ B. Com (Honours with Research) Degree with at least 80 credits in the Panjabi and with at least 50 per cent marks or equivalent CGPA in aggregate. OR One year PG Diploma in Panjabi with minimum 40 credits in the concerned subject with at least 50 per cent marks or equivalent CGPA in aggregate, after 3 year Bachelor Degree.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 890,
+    "fields": {
+      "university_course": 890,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 430,
+    "fields": {
+      "name": "Certificate Course in Panjabi (Evening) (1 Year)",
+      "short_name": "Certificate Course in Panjabi",
+      "level": "certificate",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 891,
+    "fields": {
+      "university": 48,
+      "course": 430,
+      "total_seats": 25,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 891,
+    "fields": {
+      "university_course": 891,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "Matriculation Examination.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 891,
+    "fields": {
+      "university_course": 891,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-28",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 431,
+    "fields": {
+      "name": "Certificate Course in Communication Skills (Evening) (1 Year)",
+      "short_name": "Cert. Course in Comm. Skills",
+      "level": "certificate",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 892,
+    "fields": {
+      "university": 48,
+      "course": 431,
+      "total_seats": 20,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 892,
+    "fields": {
+      "university_course": 892,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "40.0",
+      "required_graduation": "Bachelor’s degree in any discipline with at least 40% marks in aggregate.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 892,
+    "fields": {
+      "university_course": 892,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-28",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 432,
+    "fields": {
+      "name": "Certificate Course in Urdu (Evening) (1 Year)",
+      "short_name": "Certificate Course in Urdu",
+      "level": "certificate",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 893,
+    "fields": {
+      "university": 48,
+      "course": 432,
+      "total_seats": 20,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 893,
+    "fields": {
+      "university_course": 893,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "Matriculation Examination.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 893,
+    "fields": {
+      "university_course": 893,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-28",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 433,
+    "fields": {
+      "name": "Diploma in Urdu (Evening) (1 Year)",
+      "short_name": "Diploma in Urdu",
+      "level": "diploma",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 894,
+    "fields": {
+      "university": 48,
+      "course": 433,
+      "total_seats": 10,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 894,
+    "fields": {
+      "university_course": 894,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "Certificate course in Urdu.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 894,
+    "fields": {
+      "university_course": 894,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-28",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 434,
+    "fields": {
+      "name": "P.G. Diploma in Translation (Hindi/English/Panjabi) (Evening) (1 Year)",
+      "short_name": "P.G. Dip. in Translation (Hind",
+      "level": "diploma",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 895,
+    "fields": {
+      "university": 48,
+      "course": 434,
+      "total_seats": 25,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 895,
+    "fields": {
+      "university_course": 895,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "Bachelor Degree from this University or an examination recognized as equivalent thereto.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 895,
+    "fields": {
+      "university_course": 895,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-05",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 435,
+    "fields": {
+      "name": "M.Com. (2 Year)",
+      "short_name": "M.Com.",
+      "level": "pg",
+      "stream": "commerce",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 896,
+    "fields": {
+      "university": 48,
+      "course": 435,
+      "total_seats": 130,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 896,
+    "fields": {
+      "university_course": 896,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "3-Year B. Com./BBA/BTM or Bachelor of Arts/Science Degree with Economics and/or mathematics as one of the subject in all the three years with at least 50 per cent marks or equivalent CGPA in aggregate/ 47.5percentmarksorequivalent CGPA in aggregate in case of SC/ST/Differently Abled.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 896,
+    "fields": {
+      "university_course": 896,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 436,
+    "fields": {
+      "name": "M. A. Journalism & Mass Communication (2 Year)",
+      "short_name": "M. A. Journalism & Mass Comm.",
+      "level": "pg",
+      "stream": "arts",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 897,
+    "fields": {
+      "university": 48,
+      "course": 436,
+      "total_seats": 30,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 897,
+    "fields": {
+      "university_course": 897,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "3-Year Bachelor Degree in any discipline with at least 50 percent marks or equivalent CGPA in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 897,
+    "fields": {
+      "university_course": 897,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 437,
+    "fields": {
+      "name": "M.Sc. Mass Communication (2 Year)",
+      "short_name": "M.Sc. Mass Communication",
+      "level": "pg",
+      "stream": "arts",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 898,
+    "fields": {
+      "university": 48,
+      "course": 437,
+      "total_seats": 15,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 898,
+    "fields": {
+      "university_course": 898,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "3-Year Bachelor Degree in any discipline with at least 50percent marks or equivalent CGPA in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 898,
+    "fields": {
+      "university_course": 898,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 438,
+    "fields": {
+      "name": "M.Sc. (Graphics, Animation and Multimedia) (2 Year)",
+      "short_name": "M.Sc. (Graphics, Animation and",
+      "level": "pg",
+      "stream": "design",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 899,
+    "fields": {
+      "university": 48,
+      "course": 438,
+      "total_seats": 15,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 899,
+    "fields": {
+      "university_course": 899,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "3-Year Bachelor Degree in any discipline with at least 50 percent marks or equivalent CGPA in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 899,
+    "fields": {
+      "university_course": 899,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 439,
+    "fields": {
+      "name": "M.Sc. (Printing, Graphics & Packaging Technology) (2 Year)",
+      "short_name": "M.Sc. (Printing, Graphics & Pa",
+      "level": "pg",
+      "stream": "design",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 900,
+    "fields": {
+      "university": 48,
+      "course": 439,
+      "total_seats": 15,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 900,
+    "fields": {
+      "university_course": 900,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "3-Year Bachelor Degree in any discipline with at least 50 percent marks or equivalent CGPA in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 900,
+    "fields": {
+      "university_course": 900,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 440,
+    "fields": {
+      "name": "Master of Hotel Management and Catering Technology (MHM & CT) (2 Year)",
+      "short_name": "M. Hotel Mgmt. and Catering Te",
+      "level": "pg",
+      "stream": "management",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 901,
+    "fields": {
+      "university": 48,
+      "course": 440,
+      "total_seats": 30,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 901,
+    "fields": {
+      "university_course": 901,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "4-years Bachelor Degree in Hotel Management and Catering Technology/Hotel Management with at least 80 credits and 50% marks or equivalent CGPA in aggregate. OR 1-year PG Diploma in Hotel Management/Event Management/Hospitality Management with at least 40 credits and 50% marks or equivalent CGPA in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 901,
+    "fields": {
+      "university_course": 901,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 441,
+    "fields": {
+      "name": "Master of Tourism and Travel Management (MTTM) (2 Year)",
+      "short_name": "M. Tourism and Travel Mgmt. (M",
+      "level": "pg",
+      "stream": "management",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 902,
+    "fields": {
+      "university": 48,
+      "course": 441,
+      "total_seats": 20,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 902,
+    "fields": {
+      "university_course": 902,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "Bachelor’s Degree in any discipline from this University or equivalent Degree recognized by the Kurukshetra University shall be eligible for admission to First Semester of the MTTM Programme.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 902,
+    "fields": {
+      "university_course": 902,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 442,
+    "fields": {
+      "name": "MBA (2 Year)",
+      "short_name": "MBA",
+      "level": "pg",
+      "stream": "management",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 903,
+    "fields": {
+      "university": 48,
+      "course": 442,
+      "total_seats": 120,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 903,
+    "fields": {
+      "university_course": 903,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "Bachelor’s Degree in any discipline from this University or any recognized University with at least 50% marks or equivalent CGPA in aggregate/47.5% marks or equivalentCGPA in aggregate for Scheduled Castes/Scheduled Tribe/Differentlyabled.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 903,
+    "fields": {
+      "university_course": 903,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 443,
+    "fields": {
+      "name": "MBA (under SFS) (2 Year)",
+      "short_name": "MBA(SFS)",
+      "level": "pg",
+      "stream": "management",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 904,
+    "fields": {
+      "university": 48,
+      "course": 443,
+      "total_seats": 120,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 904,
+    "fields": {
+      "university_course": 904,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "Bachelor’s Degree in any discipline from this University or any recognized University with at least 50% marks or equivalent CGPA in aggregate/47.5% marks or equivalentCGPA in aggregate for Scheduled Castes/Scheduled Tribe/Differently abled.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 904,
+    "fields": {
+      "university_course": 904,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 444,
+    "fields": {
+      "name": "M.A. Education (2 Year)",
+      "short_name": "M.A. Education",
+      "level": "pg",
+      "stream": "education",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 905,
+    "fields": {
+      "university": 48,
+      "course": 444,
+      "total_seats": 15,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 905,
+    "fields": {
+      "university_course": 905,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "45.0",
+      "required_graduation": "Graduation in any discipline from any recognized university or equivalent examination with 45% marks. OR A 3-Years/ 6 semester’s Bachelor’s degree with a minimum of 120 credits for a 2-Year /4 Semesters master’s programme at level 6.5 on the NHEQF.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 905,
+    "fields": {
+      "university_course": 905,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 445,
+    "fields": {
+      "name": "B.Ed. Special Education (Visual Impairment) (2 Year)",
+      "short_name": "B.Ed. Special Edu. (Visual Imp",
+      "level": "pg",
+      "stream": "education",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 906,
+    "fields": {
+      "university": 48,
+      "course": 445,
+      "total_seats": 30,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 906,
+    "fields": {
+      "university_course": 906,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "Candidates with at least 50% marks either in the Bachelor Degree and/or in the Master Degree in Science/Social Science/Humanities or Bachelor Degree in Engineering or Technology with specialization in Science and mathematics with 55% marks or any other qualification equivalent thereto.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 906,
+    "fields": {
+      "university_course": 906,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 446,
+    "fields": {
+      "name": "M.Ed. Special Education (Visual Impairment) (2 Year)",
+      "short_name": "M.Ed. Special Edu. (Visual Imp",
+      "level": "pg",
+      "stream": "education",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 907,
+    "fields": {
+      "university": 48,
+      "course": 446,
+      "total_seats": 15,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 907,
+    "fields": {
+      "university_course": 907,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "A candidate who has successfully passed B.Ed. Spl. Ed. (VI) with minimum 50% marks from a recognized University or any other degree considered equivalent to B.Ed. Spl. Ed. (VI) from any University and/ or teaching Department under any University recognized by UGC (along with RCI registration). OR A candidate who has successfully passed the B.Ed. General Programme and has successfully completed Diploma in Education (Special Education) in respective disability area recognized by the Rehabilitation",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 907,
+    "fields": {
+      "university_course": 907,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 447,
+    "fields": {
+      "name": "Master of Physical Education (M.P.Ed.) (2 Year)",
+      "short_name": "M. Physical Edu. (M.P.Ed.)",
+      "level": "pg",
+      "stream": "sports",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 908,
+    "fields": {
+      "university": 48,
+      "course": 447,
+      "total_seats": 40,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 908,
+    "fields": {
+      "university_course": 908,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 908,
+    "fields": {
+      "university_course": 908,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 448,
+    "fields": {
+      "name": "Bachelor of Physical Education (B.P.Ed) (2 Year)",
+      "short_name": "B. Physical Edu. (B.P.Ed)",
+      "level": "pg",
+      "stream": "sports",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 909,
+    "fields": {
+      "university": 48,
+      "course": 448,
+      "total_seats": 50,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 909,
+    "fields": {
+      "university_course": 909,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 909,
+    "fields": {
+      "university_course": 909,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 449,
+    "fields": {
+      "name": "M.A. Yoga (2 Year)",
+      "short_name": "M.A. Yoga",
+      "level": "pg",
+      "stream": "sports",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 910,
+    "fields": {
+      "university": 48,
+      "course": 449,
+      "total_seats": 50,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 910,
+    "fields": {
+      "university_course": 910,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "45.0",
+      "required_graduation": "Bachelor Degree in any discipline with at least 45% marks in aggregate from Kurukshetra University or any other recognized University as equivalent therto.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 910,
+    "fields": {
+      "university_course": 910,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 450,
+    "fields": {
+      "name": "M.A. Ancient Indian History Culture & Archaeology (2 Year)",
+      "short_name": "M.A. Ancient Indian History Cu",
+      "level": "pg",
+      "stream": "arts",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 911,
+    "fields": {
+      "university": 48,
+      "course": 450,
+      "total_seats": 60,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 911,
+    "fields": {
+      "university_course": 911,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "B.A, B.Sc, B.Com. Pass Marks",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 911,
+    "fields": {
+      "university_course": 911,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 451,
+    "fields": {
+      "name": "M.A. (Fine Arts) (2 Year)",
+      "short_name": "M.A. (Fine Arts)",
+      "level": "pg",
+      "stream": "design",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 912,
+    "fields": {
+      "university": 48,
+      "course": 451,
+      "total_seats": 30,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 912,
+    "fields": {
+      "university_course": 912,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "45.0",
+      "required_graduation": "B.A. with Art/Commercial Art, Designing & Painting as one of the subjects with at least 45% marks in aggregate or 4-years BFA or BVA (Applied Art or Painting or Sculpture or Graphic Art) with at least 45% marks in aggregate. OR Graduation with at least 45% marks in aggregate and 2 Yr. Diploma in Art &Craft from a recognized University/Board. OR B.Sc. in Graphic Animation with at least 45% marks in aggregate. OR Graduation with at least 45% marks in aggregate and 3 Yr. Diploma in Art for drawing ",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 912,
+    "fields": {
+      "university_course": 912,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 452,
+    "fields": {
+      "name": "Master of Fine Arts (MFA) (2 Year)",
+      "short_name": "Master of Fine Arts (MFA)",
+      "level": "pg",
+      "stream": "design",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 913,
+    "fields": {
+      "university": 48,
+      "course": 452,
+      "total_seats": 50,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 913,
+    "fields": {
+      "university_course": 913,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "4 Year Bachelor of Fine Arts (BFA) or Bachelor of Visual Arts (BVA) (Applied Art or Painting or Graphic Art or Sculpture) from a recognized university or its equivalent examination with 50% marks in aggregate provided that the candidate must have passed that particular subject in BFA/BVA.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 913,
+    "fields": {
+      "university_course": 913,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 453,
+    "fields": {
+      "name": "M.A. Music (Vocal & Instrumental) (2 Year)",
+      "short_name": "M.A. Music (Vocal & Instrument",
+      "level": "pg",
+      "stream": "design",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 914,
+    "fields": {
+      "university": 48,
+      "course": 453,
+      "total_seats": 36,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 914,
+    "fields": {
+      "university_course": 914,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "45.0",
+      "required_graduation": "B.A.(Hons) in Music with 45% marks in aggregate. OR Bachelor's Degree with Music as one of the subjects with at least 45% marks in the subject of Music or Bachelor's Degree of Minimum 3 years duration with any of the following examinations: 'Sangeet Prabhakar' from Prayag Sangeet Samiti, Allahabad or from Rajasthan Sangeet /Sansthan, Jaipur, \"Sangeet Visharad' from Bhatkhande Sangeet Vidyapith, Lucknow or from Gandharva Mahavidyalaya, Mumbai or from Prachin Kala Kendra, Chandigarh.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 914,
+    "fields": {
+      "university_course": 914,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 454,
+    "fields": {
+      "name": "M.A. Philosophy (2 Year)",
+      "short_name": "M.A. Philosophy",
+      "level": "pg",
+      "stream": "arts",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 915,
+    "fields": {
+      "university": 48,
+      "course": 454,
+      "total_seats": 40,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 915,
+    "fields": {
+      "university_course": 915,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "45.0",
+      "required_graduation": "3 Years Bachelor Degree with at least 45 percent marks or equivalent CGPA in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 915,
+    "fields": {
+      "university_course": 915,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 455,
+    "fields": {
+      "name": "Diploma in Yoga & Applied Philosophy (Morning) (1 Year)",
+      "short_name": "Dip. in Yoga & Applied Philoso",
+      "level": "diploma",
+      "stream": "sports",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 916,
+    "fields": {
+      "university": 48,
+      "course": 455,
+      "total_seats": 20,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 916,
+    "fields": {
+      "university_course": 916,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "Senior Secondary Certificate Examination (10+2 Standard) from the Board of School Education Haryana or an examination recognized as equivalent thereto.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 916,
+    "fields": {
+      "university_course": 916,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-28",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 456,
+    "fields": {
+      "name": "Diploma in Reasoning (Evening) (6 Months)",
+      "short_name": "Diploma in Reasoning",
+      "level": "diploma",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 917,
+    "fields": {
+      "university": 48,
+      "course": 456,
+      "total_seats": 10,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 917,
+    "fields": {
+      "university_course": 917,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "Senior Secondary Certificate Examination (10+2 Standard) of the Board of School Education, Haryana or an examination recognized as equivalent thereto.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 917,
+    "fields": {
+      "university_course": 917,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-28",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 457,
+    "fields": {
+      "name": "Certificate programme in Bhagvadgita (Evening) (1 Year)",
+      "short_name": "Cert. programme in Bhagvadgita",
+      "level": "certificate",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 918,
+    "fields": {
+      "university": 48,
+      "course": 457,
+      "total_seats": 40,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 918,
+    "fields": {
+      "university_course": 918,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "Senior Secondary Certificate Examination (10+2) of the Board of School Education, Haryana or an examination recognized as equivalent thereto.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 918,
+    "fields": {
+      "university_course": 918,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-28",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 458,
+    "fields": {
+      "name": "Certificate programme in Moral & Spiritual Counseling (Evening) (1 Year)",
+      "short_name": "Cert. programme in Moral & Spi",
+      "level": "certificate",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 919,
+    "fields": {
+      "university": 48,
+      "course": 458,
+      "total_seats": 40,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 919,
+    "fields": {
+      "university_course": 919,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "Senior Secondary Certificate Examination (10+2) of the Board of School Education, Haryana or an examination recognized as equivalent thereto or higher degree.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 919,
+    "fields": {
+      "university_course": 919,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-28",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 459,
+    "fields": {
+      "name": "M.A. (Sanskrit) (2 Year)",
+      "short_name": "M.A. (Sanskrit)",
+      "level": "pg",
+      "stream": "arts",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 920,
+    "fields": {
+      "university": 48,
+      "course": 459,
+      "total_seats": 60,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 920,
+    "fields": {
+      "university_course": 920,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "45.0",
+      "required_graduation": "B.A.(Hons.) in Sanskrit with at least45% marks in the aggregate OR B.A. or an examination recognized as equivalent to B.A. with Sanskrit (Elective or compulsory) with 45%marks in Sanskrit or 50% marks in the aggregate. OR B.A. or any Graduate from a recognizedUniversity/Institute without Sanskrit with at least 60% marks in the aggregate having Sanskrit as asubject in Matric/Senior Secondary (10+2 level). OR Shastri with at least 45% marks (out of the aggregate excluding the additional papers) in",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 920,
+    "fields": {
+      "university_course": 920,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 460,
+    "fields": {
+      "name": "Diploma in Sanskrit Language (Online) (1 Year) (Evening)",
+      "short_name": "Diploma in Sanskrit Language",
+      "level": "diploma",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 921,
+    "fields": {
+      "university": 48,
+      "course": 460,
+      "total_seats": 10,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 921,
+    "fields": {
+      "university_course": 921,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "Senior Secondary Certificate (10+2) Examination.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 921,
+    "fields": {
+      "university_course": 921,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-28",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 461,
+    "fields": {
+      "name": "P.G. Diploma in Knowledge Traditions in Sanskrit & Indology (1 Year) (Evening)",
+      "short_name": "P.G. Dip. in Knowledge Traditi",
+      "level": "diploma",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 922,
+    "fields": {
+      "university": 48,
+      "course": 461,
+      "total_seats": 25,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 922,
+    "fields": {
+      "university_course": 922,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "Graduation from any stream with 50% or above marks",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 922,
+    "fields": {
+      "university_course": 922,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-05",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 462,
+    "fields": {
+      "name": "P.G. Diploma in Buddhist Studies (Morning) (1 Year)",
+      "short_name": "P.G. Dip. in Buddhist Studies",
+      "level": "diploma",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 923,
+    "fields": {
+      "university": 48,
+      "course": 462,
+      "total_seats": 20,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 923,
+    "fields": {
+      "university_course": 923,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "40.0",
+      "required_graduation": "Graduation in any discipline with 40% marks.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 923,
+    "fields": {
+      "university_course": 923,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-05",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 463,
+    "fields": {
+      "name": "LL.M (2 Year) (under SFS)",
+      "short_name": "LL.M(SFS)",
+      "level": "pg",
+      "stream": "law",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 924,
+    "fields": {
+      "university": 48,
+      "course": 463,
+      "total_seats": 50,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 924,
+    "fields": {
+      "university_course": 924,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "(i) The candidate must have an LL.B. degree (3 Yr. or 5 Yr. integrated) with minimum 50% marks in the aggregate (equivalent grade) (minimum pass marks for SC/ST/Differently Abled candidates) or equivalent degree from a recognized University of India or Abroad. (ii) The admission shall be based exclusively on the performance of the candidate in the Entrance Test conducted by the University. OR (iii) On merit of LL.B. Degree ( 3 Yr. of 5 Yr. Integrated) as may be decided by the University from tim",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 924,
+    "fields": {
+      "university_course": 924,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 464,
+    "fields": {
+      "name": "LL.M (1 Year)",
+      "short_name": "LL.M",
+      "level": "pg",
+      "stream": "law",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 925,
+    "fields": {
+      "university": 48,
+      "course": 464,
+      "total_seats": 50,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 925,
+    "fields": {
+      "university_course": 925,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 925,
+    "fields": {
+      "university_course": 925,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 465,
+    "fields": {
+      "name": "LL.B. (Professional) (3 Year)",
+      "short_name": "LL.B. (Professional)",
+      "level": "pg",
+      "stream": "law",
+      "duration_years": "3.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 926,
+    "fields": {
+      "university": 48,
+      "course": 465,
+      "total_seats": 180,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 926,
+    "fields": {
+      "university_course": 926,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "40.0",
+      "required_graduation": "An applicant who has graduated in any discipline of knowledge from a University established by an Act of Parliament or by a State Legislature or an equivalent national institution recognized as a Deemed to be University or foreign University recognized as equivalent to the status of an Indian University by an authority competent to declare equivalence, may apply for a three year’s degree programme in law leading to conferment of LL.B degree on successful completion of the regular programme condu",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 926,
+    "fields": {
+      "university_course": 926,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 466,
+    "fields": {
+      "name": "LL.M. (2 Year)",
+      "short_name": "LL.M.",
+      "level": "pg",
+      "stream": "law",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 927,
+    "fields": {
+      "university": 48,
+      "course": 466,
+      "total_seats": 100,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 927,
+    "fields": {
+      "university_course": 927,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "55.0",
+      "required_graduation": "LL.B. (Professional) Examination of KUK or an examination recognized as equivalent thereto with at least 55% marks in the aggregate (Minimum Pass marks for SC/ST/Differently Abled candidates) shall be eligible to join First Semester of the LL.M. Programme.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 927,
+    "fields": {
+      "university_course": 927,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 467,
+    "fields": {
+      "name": "M.Sc. Biochemistry (2 Year)",
+      "short_name": "M.Sc. Biochemistry",
+      "level": "pg",
+      "stream": "science",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 928,
+    "fields": {
+      "university": 48,
+      "course": 467,
+      "total_seats": 40,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 928,
+    "fields": {
+      "university_course": 928,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "3-Year Bachelor Degree in any branch of Life Sciences with at least 50 per cent marks or equivalent CGPA in aggregate. OR B.Pharmacy/ BMLT/ B.V.Sc. with at least 50 per cent marks or equivalent CGPA in aggregate. OR B.Sc (Hons) in any branch of Life Sciences with at least 50 percent marks or equivalent CGPA in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 928,
+    "fields": {
+      "university_course": 928,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 468,
+    "fields": {
+      "name": "M.Sc. Bio-tech. (2 Year)",
+      "short_name": "M.Sc. Bio-tech.",
+      "level": "pg",
+      "stream": "science",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 929,
+    "fields": {
+      "university": 48,
+      "course": 468,
+      "total_seats": 40,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 929,
+    "fields": {
+      "university_course": 929,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "Bachelor's Degree with 50% marks in B.Sc. with Botany, Genetics, Zoology, Biochemistry, Microbiology or Biotechnology as one of the main subjects.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 929,
+    "fields": {
+      "university_course": 929,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 469,
+    "fields": {
+      "name": "M.Sc. Botany (2 Year)",
+      "short_name": "M.Sc. Botany",
+      "level": "pg",
+      "stream": "science",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 930,
+    "fields": {
+      "university": 48,
+      "course": 469,
+      "total_seats": 60,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 930,
+    "fields": {
+      "university_course": 930,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "3-year B.Sc. Degree with Botany as one of the subjects in all the 3 years with at least 50 percent marks or equivalent CGPA in aggregate. OR 3 Year B.Sc. degree with minimum 24 credits in Botany and with at least 50 marks or equivalent CGPA in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 930,
+    "fields": {
+      "university_course": 930,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 470,
+    "fields": {
+      "name": "PG Diploma in Floriculture (Evening) (1 Year)",
+      "short_name": "PG Diploma in Floriculture",
+      "level": "diploma",
+      "stream": "science",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 931,
+    "fields": {
+      "university": 48,
+      "course": 470,
+      "total_seats": 20,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 931,
+    "fields": {
+      "university_course": 931,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "Bachelor’s Degree in Science with one of the Biological Science subjects with 50% marks in aggregate. OR B.Sc. Agriculture with 55% marks in aggregate.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 931,
+    "fields": {
+      "university_course": 931,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-05",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 471,
+    "fields": {
+      "name": "M.Sc. Home Science (Food, Nutrition and Dietetics) (2 Year)",
+      "short_name": "M.Sc. Home Sc. (Food, Nutritio",
+      "level": "pg",
+      "stream": "science",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 932,
+    "fields": {
+      "university": 48,
+      "course": 471,
+      "total_seats": 40,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 932,
+    "fields": {
+      "university_course": 932,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "3 year B.Sc./ B.Voc. Degree with Home Science/ Community Science/ Foods and Nutrition/ Clinical Nutrition & Dietetics/ Human Nutrition & Dietetics/ Nutrition and Dietetics/Agriculture/ any branch of Life Sciences/ Medical Sciences with at least 50 percent marks or equivalent CGPA in aggregate. OR 3year B.Sc./B.Voc Degree with minimum 24 credits in Food/Nutrition/Dietetics and with at least 50 per cent marks or equivalent CGPA in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 932,
+    "fields": {
+      "university_course": 932,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 472,
+    "fields": {
+      "name": "M.Sc. Home Science (Human Development) (1 Year)",
+      "short_name": "M.Sc. Home Sc. (Human Developm",
+      "level": "pg",
+      "stream": "science",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 933,
+    "fields": {
+      "university": 48,
+      "course": 472,
+      "total_seats": 33,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 933,
+    "fields": {
+      "university_course": 933,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "4 year B.Sc. (Honours)/ B.Sc. (Honours with Research) degree with specialization in Human Development with at least 80 credits and with at least 50 percent marks or equivalent CGPA in aggregate. OR One year PG Diploma in Child Guidance and Family Counselling with minimum 40 credits in the concerned subject with at least 50 percent marks or equivalent CGPA in aggregate after three year B.Sc./ B.Voc degree with Home Science/ Community Science.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 933,
+    "fields": {
+      "university_course": 933,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 473,
+    "fields": {
+      "name": "M.Sc. (Environmental Science) (2 Year)",
+      "short_name": "M.Sc. (Environmental Science)",
+      "level": "pg",
+      "stream": "science",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 934,
+    "fields": {
+      "university": 48,
+      "course": 473,
+      "total_seats": 40,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 934,
+    "fields": {
+      "university_course": 934,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "B.Sc.(General)/B.Sc.(Hons.)/B.Sc. in any allied subject of Life Science/ Environmental Science/ Physical Sciences/Agriculture/B.E./B.Tech. in any discipline with at least 50% marks in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 934,
+    "fields": {
+      "university_course": 934,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 474,
+    "fields": {
+      "name": "PG Diploma in Environmental Science (1 Year)",
+      "short_name": "PG Dip. in Environmental Sc.",
+      "level": "diploma",
+      "stream": "science",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 935,
+    "fields": {
+      "university": 48,
+      "course": 474,
+      "total_seats": 30,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 935,
+    "fields": {
+      "university_course": 935,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 935,
+    "fields": {
+      "university_course": 935,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-05",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 475,
+    "fields": {
+      "name": "M.Tech. Energy & Environmental Management (2 Year)",
+      "short_name": "M.Tech. Energy & Env. Mgmt.",
+      "level": "pg",
+      "stream": "science",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 936,
+    "fields": {
+      "university": 48,
+      "course": 475,
+      "total_seats": 12,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 936,
+    "fields": {
+      "university_course": 936,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "B.Tech./B.E./M.Sc. Environmental Science or any allied subject of Life Sciences/Physical Sciences/Earth Science with at least 50% marks in aggregate (47.50% marks for SC/ST/ Differently Abled candidates).",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 936,
+    "fields": {
+      "university_course": 936,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 476,
+    "fields": {
+      "name": "PG Diploma in Health, Safety and Environment (PGDHSE) (1 Year)",
+      "short_name": "PG Dip. in Health, Safety and ",
+      "level": "diploma",
+      "stream": "science",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 937,
+    "fields": {
+      "university": 48,
+      "course": 476,
+      "total_seats": 40,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 937,
+    "fields": {
+      "university_course": 937,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "B.Sc./B.Pharma/B.E./B.Tech/M.Sc./M.Pharma/M.Sc. Tech/M.Tech/M.E. (Any discipline) with minimum 50% marks.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 937,
+    "fields": {
+      "university_course": 937,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-05",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 477,
+    "fields": {
+      "name": "M.Sc. Microbiology (2 Year)",
+      "short_name": "M.Sc. Microbiology",
+      "level": "pg",
+      "stream": "science",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 938,
+    "fields": {
+      "university": 48,
+      "course": 477,
+      "total_seats": 50,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 938,
+    "fields": {
+      "university_course": 938,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "4–Year Bachelor Degree (Honours/Honours with Research) in Microbiology with atleast 80 credits and 50% marks or equivalent CGPA in aggregate. OR 1- Year PG Diploma in Microbiology with atleast 40 credits and 50% marks or equivalent CGPA in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 938,
+    "fields": {
+      "university_course": 938,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 478,
+    "fields": {
+      "name": "M.Sc.(Zoology) (2 Year)",
+      "short_name": "M.Sc.(Zoology)",
+      "level": "pg",
+      "stream": "science",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 939,
+    "fields": {
+      "university": 48,
+      "course": 478,
+      "total_seats": 60,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 939,
+    "fields": {
+      "university_course": 939,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "3-year B.Sc. Degree with Zoology as one of the subjects in all the 3 years and with at least 50 percent marks or equivalent CGPA in aggregate. OR 3-Year B.Sc. Degree with minimum 24 credits in Zoology and with at least 50 percent marks or equivalent CGPA in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 939,
+    "fields": {
+      "university_course": 939,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 479,
+    "fields": {
+      "name": "M.Sc. (Forensic Science) (2 Year)",
+      "short_name": "M.Sc. (Forensic Science)",
+      "level": "pg",
+      "stream": "science",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 940,
+    "fields": {
+      "university": 48,
+      "course": 479,
+      "total_seats": 30,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 940,
+    "fields": {
+      "university_course": 940,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "3-Year Bachelor Degree in any discipline of Science with at least 50 percent marks or equivalent CGPA in aggregate. OR 3-Year Bachelor Degree with Forensic Science as a Major or Minor subject and with at least 50 percent marks or equivalent CGPA in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 940,
+    "fields": {
+      "university_course": 940,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 480,
+    "fields": {
+      "name": "M.Pharmacy (2 Year)",
+      "short_name": "M.Pharmacy",
+      "level": "pg",
+      "stream": "pharmacy",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 941,
+    "fields": {
+      "university": 48,
+      "course": 480,
+      "total_seats": 45,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 941,
+    "fields": {
+      "university_course": 941,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "Eligibility for General candidates A person who has passed Bachelor of Pharmacy (B. Pharmacy) examination of this University or an examination recognized by this University as equivalent thereto or from an institution approved by Pharmacy Council of India, New Delhi, with at least 55% marks shall be eligible for admission to First Semester of M. Pharmacy Programme. Additionally, A) For candidates having not less than 5 years professional experience, after passing B. Pharmacy programme, there sha",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 941,
+    "fields": {
+      "university_course": 941,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 481,
+    "fields": {
+      "name": "M.Sc. Chemistry (2 Year)",
+      "short_name": "M.Sc. Chemistry",
+      "level": "pg",
+      "stream": "science",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 942,
+    "fields": {
+      "university": 48,
+      "course": 481,
+      "total_seats": 120,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 942,
+    "fields": {
+      "university_course": 942,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "3-year B.Sc. Degree with Chemistry as one of the subjects in all the 3 years and with at least 50% marks or equivalent CGPA in aggregate. OR 3-year B.Sc.Degree with minimum 24 credits in Chemistry and with at least 50% marks or equivalent CGPA in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 942,
+    "fields": {
+      "university_course": 942,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 482,
+    "fields": {
+      "name": "M. Tech. (Comp. Sc. & Engineering) (2 Year)",
+      "short_name": "M. Tech. (Comp. Sc. & Engg.)",
+      "level": "pg",
+      "stream": "engineering",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 943,
+    "fields": {
+      "university": 48,
+      "course": 482,
+      "total_seats": 18,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 943,
+    "fields": {
+      "university_course": 943,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "M.Sc. in Computer Science/ Computer Science (Software)/ Information Technology with at least 50% marks (47.50% marks for SC/ST/Differently Abled) in aggregate; OR M.C.A. with at least 50% marks (47.50% marks for SC/ST/Differently Abled) in aggregate; OR B.E./B.Tech./Bachelor’s Degree (NCRF Level 6) Computer Engineering/Computer Science & Engineering/Information Technology/Computer Science/Computer Applications with at least 50% marks (47.50% marks for SC/ST/Differently Abled) in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 943,
+    "fields": {
+      "university_course": 943,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 483,
+    "fields": {
+      "name": "M.Sc. Computer Science (Software) (2 Year)",
+      "short_name": "M.Sc. Computer Sc. (Software)",
+      "level": "pg",
+      "stream": "computer",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 944,
+    "fields": {
+      "university": 48,
+      "course": 483,
+      "total_seats": 60,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 944,
+    "fields": {
+      "university_course": 944,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "A 3-year/6-semester Bachelor’s degree (with at least 50% marks (47.5% marks in case of candidates belonging to reserved category: SC/ST/Differently abled) with Computer Science or Computer Applications as a major course for M.Sc. Computer Science (Software) (2 years).",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 944,
+    "fields": {
+      "university_course": 944,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 484,
+    "fields": {
+      "name": "Master of Computer Application (MCA) (2 Year)",
+      "short_name": "M. Computer Application (MCA)",
+      "level": "pg",
+      "stream": "computer",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 945,
+    "fields": {
+      "university": 48,
+      "course": 484,
+      "total_seats": 120,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 945,
+    "fields": {
+      "university_course": 945,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "A 3-year/6-semester Bachelor’s degree (with at least 50% marks (47.5% marks in case of candidates belonging to reserved category: SC/ST/Differently abled). (for students having no Mathematics background at 10+2 level or at graduation level, a compulsory bridge course, framed by the University, has to be done and an additional bridge course related to computer subjects for students having no Computer Science background at 10+2 level or at graduation level, has to be done as per the norms of the U",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 945,
+    "fields": {
+      "university_course": 945,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 485,
+    "fields": {
+      "name": "M.Sc. Electronics (2 Year)",
+      "short_name": "M.Sc. Electronics",
+      "level": "pg",
+      "stream": "science",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 946,
+    "fields": {
+      "university": 48,
+      "course": 485,
+      "total_seats": 40,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 946,
+    "fields": {
+      "university_course": 946,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "B.Sc. with any three of subjects: Electronics, Electronic Equipment Maintenance, Physics, Mathematics, Computer Science, Chemistry and Instrumentation with at least 50% of marks of equivalent CGPA in aggregate. OR B.Sc. with at least 24 credits in each of any three of subjects: Electronics, Electronic Equipment Maintenance, Physics, Mathematics, Computer Science, Chemistry and Instrumentation with at least 50% of marks or equivalent CGPA in aggregate. OR B.Sc. (IT)/B.Sc. (Instrumentation)/ B.Sc.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 946,
+    "fields": {
+      "university_course": 946,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 486,
+    "fields": {
+      "name": "M.Sc. (Geography) (2 Year)",
+      "short_name": "M.Sc. (Geography)",
+      "level": "pg",
+      "stream": "science",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 947,
+    "fields": {
+      "university": 48,
+      "course": 486,
+      "total_seats": 60,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 947,
+    "fields": {
+      "university_course": 947,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "3- year B.A/B.Sc. Degree with Geography as one of the subjects in all the 3 years and with at least 50 percent marks or equivalent CGPA in aggregate. OR 3-Year B.A/B.Sc. Degree with minimum 24 credits in Geography and with at least 50 percent marks or equivalent CGPA in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 947,
+    "fields": {
+      "university_course": 947,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 487,
+    "fields": {
+      "name": "M.Sc. (Applied Geology) (2 Year)",
+      "short_name": "M.Sc. (Applied Geology)",
+      "level": "pg",
+      "stream": "science",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 948,
+    "fields": {
+      "university": 48,
+      "course": 487,
+      "total_seats": 30,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 948,
+    "fields": {
+      "university_course": 948,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "B.Sc. Examination with at least 50% marks in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 948,
+    "fields": {
+      "university_course": 948,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 488,
+    "fields": {
+      "name": "M.Sc. Geophysics (2 Year)",
+      "short_name": "M.Sc. Geophysics",
+      "level": "pg",
+      "stream": "science",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 949,
+    "fields": {
+      "university": 48,
+      "course": 488,
+      "total_seats": 25,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 949,
+    "fields": {
+      "university_course": 949,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "Bachelor of Physical Science (B.Sc. Physical Science) with at least 50% marks in aggregate; OR Bachelor of Computer Applications (BCA) with at least 50% marks in aggregate. OR B.Sc. in Geology/Earth Sciences with at least 50% marks in aggregate; OR B.Sc. with Physics or Mathematics as one of the main subjects and at least 50% marks in aggregate. OR B.Sc (Hons.)/Single Major in Physics/Mathematics/Electronics/Geology/Computer Science with at least 50% marks in aggregate. OR B.E./B.Tech with Mathe",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 949,
+    "fields": {
+      "university_course": 949,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 489,
+    "fields": {
+      "name": "M.Sc. (Mathematics) (2 Year)",
+      "short_name": "M.Sc. (Mathematics)",
+      "level": "pg",
+      "stream": "science",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 950,
+    "fields": {
+      "university": 48,
+      "course": 489,
+      "total_seats": 150,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 950,
+    "fields": {
+      "university_course": 950,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "3-year B.A./B.Sc. Degree with Mathematics as one of the subjects in all the 3 years and with at least 50 per cent marks or equivalent CGPA in aggregate. OR 3-year B.A./B.Sc. Degree with minimum 24 credits in Mathematics and with at least 50 per cent marks or equivalent CGPA in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 950,
+    "fields": {
+      "university_course": 950,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 490,
+    "fields": {
+      "name": "M.Sc. (Physics) (2 Year)",
+      "short_name": "M.Sc. (Physics)",
+      "level": "pg",
+      "stream": "science",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 951,
+    "fields": {
+      "university": 48,
+      "course": 490,
+      "total_seats": 120,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 951,
+    "fields": {
+      "university_course": 951,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "all three years and with at least 50% marks or equivalent CGPA in aggregate. OR 3 year B.Sc. Degree with minimum 24 credits in Physics and with at least 50%marks or equivalent CGPA in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 951,
+    "fields": {
+      "university_course": 951,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 491,
+    "fields": {
+      "name": "M.Sc. (Statistics) (2 Year)",
+      "short_name": "M.Sc. (Statistics)",
+      "level": "pg",
+      "stream": "science",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 952,
+    "fields": {
+      "university": 48,
+      "course": 491,
+      "total_seats": 45,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 952,
+    "fields": {
+      "university_course": 952,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "3-year B.A./B.Sc. Degree with Statistics or Mathematics or Operational Research as one of the subjects in all the 3 years with at least 50 per cent marks or equivalent CGPA in aggregate. OR 3-year B.A./B.Sc. Degree with minimum 24 credits in Statistics or Mathematics or Operational Research and with at least 50 per cent marks or equivalent CGPA in aggregate. OR B.E./B.Tech. with Mathematics as a subject at 10+2level with at least 50percent marks or equivalent CGPA in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 952,
+    "fields": {
+      "university_course": 952,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 492,
+    "fields": {
+      "name": "M.A. Economics (2 Year)",
+      "short_name": "M.A. Economics",
+      "level": "pg",
+      "stream": "commerce",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 953,
+    "fields": {
+      "university": 48,
+      "course": 492,
+      "total_seats": 120,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 953,
+    "fields": {
+      "university_course": 953,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "45.0",
+      "required_graduation": "Graduation in any discipline with 50 % aggregate marks or with 45 % marks in economics.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 953,
+    "fields": {
+      "university_course": 953,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 493,
+    "fields": {
+      "name": "M.A. Business Economics (1 Year)",
+      "short_name": "M.A. Business Economics",
+      "level": "pg",
+      "stream": "commerce",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 954,
+    "fields": {
+      "university": 48,
+      "course": 493,
+      "total_seats": 37,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 954,
+    "fields": {
+      "university_course": 954,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "4-years Bachelor Degree (Honours/Honours with Research) in Economics/ Business Economics/ Applied Economics/Econometrics with at least 80 credits and 50 % marks or equivalent CGPA in aggregate. OR 1-year PG Diploma in Economics/Business Economics/ Applied Economics/ Econometrics, with at least 40 credits and 50 % marks or equivalent CGPA in aggregate",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 954,
+    "fields": {
+      "university_course": 954,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 494,
+    "fields": {
+      "name": "M.A. History (2 Year)",
+      "short_name": "M.A. History",
+      "level": "pg",
+      "stream": "arts",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 955,
+    "fields": {
+      "university": 48,
+      "course": 494,
+      "total_seats": 60,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 955,
+    "fields": {
+      "university_course": 955,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "3-years Bachelor Degree with at least 50% marks or equivalent CGPA in aggregate OR 3-years Bachelor Degree with History as a Major subject and with at least 50 % marks or equivalent CGPA in aggregate",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 955,
+    "fields": {
+      "university_course": 955,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 495,
+    "fields": {
+      "name": "PG Diploma in Archives & Records Management (Evening) (1 Year)",
+      "short_name": "PG Dip. in Archives & Records ",
+      "level": "diploma",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 956,
+    "fields": {
+      "university": 48,
+      "course": 495,
+      "total_seats": 20,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 956,
+    "fields": {
+      "university_course": 956,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "Master’s Degree in History/Ancient Indian History Culture & Archaeology/Muscology/Archaeology/Library & Information Science with at least 50% marks or equivalent CGPA in aggregate. However, preference will be given to the candidates having qualified their Master’s Degree in History with specialization in Modern Indian History.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 956,
+    "fields": {
+      "university_course": 956,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-05",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 496,
+    "fields": {
+      "name": "M.A. Political Science (2 Year)",
+      "short_name": "M.A. Political Science",
+      "level": "pg",
+      "stream": "arts",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 957,
+    "fields": {
+      "university": 48,
+      "course": 496,
+      "total_seats": 60,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 957,
+    "fields": {
+      "university_course": 957,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "45.0",
+      "required_graduation": "B.A.(Hons.) in Political Science with 45% marks in aggregate OR B.A. with at least 45% marks in the subject of Political Science/Public Administration/ Sociology/History/ Economics. OR Bachelor’s Degree in any discipline with at least 50% marks.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 957,
+    "fields": {
+      "university_course": 957,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 497,
+    "fields": {
+      "name": "M.A. (Defence & Strategic Studies) (2 Year)",
+      "short_name": "M.A. (Defence & Strategic Stud",
+      "level": "pg",
+      "stream": "arts",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 958,
+    "fields": {
+      "university": 48,
+      "course": 497,
+      "total_seats": 30,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 958,
+    "fields": {
+      "university_course": 958,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "45.0",
+      "required_graduation": "B.A.with 45% marks in the subject of Military Science. OR Bachelor’s Degree in any discipline with at least 50%marks.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 958,
+    "fields": {
+      "university_course": 958,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 498,
+    "fields": {
+      "name": "M.A. Psychology (2 Year)",
+      "short_name": "M.A. Psychology",
+      "level": "pg",
+      "stream": "science",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 959,
+    "fields": {
+      "university": 48,
+      "course": 498,
+      "total_seats": 60,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 959,
+    "fields": {
+      "university_course": 959,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "45.0",
+      "required_graduation": "B.A.(Hons.) in Psychology with 45% marks in aggregate. OR Bachelor's Degree in any discipline with at least 50% marks in aggregate or 45% marks in the subject of Psychology.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 959,
+    "fields": {
+      "university_course": 959,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 499,
+    "fields": {
+      "name": "P.G. Diploma in Guidance, Counselling and Psychotherapy (Morning) (1 Year)",
+      "short_name": "P.G. Dip. in Guidance, Couns. ",
+      "level": "diploma",
+      "stream": "science",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 960,
+    "fields": {
+      "university": 48,
+      "course": 499,
+      "total_seats": 25,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 960,
+    "fields": {
+      "university_course": 960,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": null,
+      "required_graduation": "M.A./M.Sc. (Psychology/AppliedPsychology/Education/Social Work) or M.Ed.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 960,
+    "fields": {
+      "university_course": 960,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-05",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 500,
+    "fields": {
+      "name": "M.A. Public Administration (2 Year)",
+      "short_name": "M.A. Public Administration",
+      "level": "pg",
+      "stream": "arts",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 961,
+    "fields": {
+      "university": 48,
+      "course": 500,
+      "total_seats": 60,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 961,
+    "fields": {
+      "university_course": 961,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "45.0",
+      "required_graduation": "Bachelor's Degree in any discipline with 50% marks in aggregate. OR Bachelor's Degre with 45% mark in the subject of Public Administration/Political Science/ History/Sociology/Economics.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 961,
+    "fields": {
+      "university_course": 961,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 501,
+    "fields": {
+      "name": "Master of Social Work (MSW) (2 Year)",
+      "short_name": "Master of Social Work (MSW)",
+      "level": "pg",
+      "stream": "arts",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 962,
+    "fields": {
+      "university": 48,
+      "course": 501,
+      "total_seats": 50,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 962,
+    "fields": {
+      "university_course": 962,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "Bachelor’s Degree in any discipline with 50% marks in aggregate.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 962,
+    "fields": {
+      "university_course": 962,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 502,
+    "fields": {
+      "name": "M.A. (Sociology) (2 Year)",
+      "short_name": "M.A. (Sociology)",
+      "level": "pg",
+      "stream": "arts",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 963,
+    "fields": {
+      "university": 48,
+      "course": 502,
+      "total_seats": 60,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 963,
+    "fields": {
+      "university_course": 963,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "45.0",
+      "required_graduation": "3-year Bachelor Degree with at least 50 percent marks or equivalent CGPA in aggregate or 45 percent marks in the subject of Sociology/ Psychology/Social Work.",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 963,
+    "fields": {
+      "university_course": 963,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 503,
+    "fields": {
+      "name": "M.A. Women’s Studies (2 Year)",
+      "short_name": "M.A. Women’s Studies",
+      "level": "pg",
+      "stream": "arts",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 964,
+    "fields": {
+      "university": 48,
+      "course": 503,
+      "total_seats": 20,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 964,
+    "fields": {
+      "university_course": 964,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "Bachelor’s Degree in any discipline with at least 50% marks or equivalent CGPA in aggregate",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 964,
+    "fields": {
+      "university_course": 964,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 504,
+    "fields": {
+      "name": "P.G. Diploma in Women’s Studies (Morning) (1 Year)",
+      "short_name": "P.G. Dip. in Women’s Studies",
+      "level": "diploma",
+      "stream": "arts",
+      "duration_years": "1.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 965,
+    "fields": {
+      "university": 48,
+      "course": 504,
+      "total_seats": 20,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 965,
+    "fields": {
+      "university_course": 965,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "Bachelor’s Degree in any discipline with at least 50% marks or equivalent CGPA in aggregate.",
+      "entrance_exam": "Merit-based / Entrance Test as notified",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 965,
+    "fields": {
+      "university_course": 965,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-05",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 505,
+    "fields": {
+      "name": "M.Tech. (Computer Engineering) (2 Year)",
+      "short_name": "M.Tech. (Computer Engineering)",
+      "level": "pg",
+      "stream": "engineering",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 966,
+    "fields": {
+      "university": 48,
+      "course": 505,
+      "total_seats": 18,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 966,
+    "fields": {
+      "university_course": 966,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "B.E./B.Tech. or its equivalent either in Computer Science and Engineering /Information Technology/ Electronics and Communication/ Telecommunication from AICTE approved institutions with overall 50% marks in aggregate or equivalent CGPA (minimum 47.5% marks in aggregate or equivalent CGPA for SC/ST/ Differently Abled candidates), preferably with valid GATE score. OR M.Sc. in Computer Science/ Information Technology/ Electronics from UGC approved institutions with overall minimum 50% marks in aggr",
+      "entrance_exam": "KUK Entrance Test; preference for valid GATE score",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 966,
+    "fields": {
+      "university_course": 966,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-07-05",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: gate-entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 506,
+    "fields": {
+      "name": "M. Tech. (Electronics & Communication Engineering) (2 Year)",
+      "short_name": "M. Tech. (Elec. & Comm. Engg.)",
+      "level": "pg",
+      "stream": "engineering",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 967,
+    "fields": {
+      "university": 48,
+      "course": 506,
+      "total_seats": 12,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 967,
+    "fields": {
+      "university_course": 967,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "Valid GATE score in the subject of Electronics and Communication Engineering (EC) having B.Tech/B.E. in any branch of Engineering with overall minimum 50% marks in aggregate or equivalent CGPA (minimum 47.5% marks in aggregate or equivalent CGPA for SC/ST/ Differently Abled candidates). OR B.E. / B.Tech or its equivalent in Electronics / Electronics and Communication/ Electrical and Electronics/Electronics and Instrumentation/Applied Electronics and Instrumentation Engineering/Electronics and Co",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 967,
+    "fields": {
+      "university_course": 967,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 507,
+    "fields": {
+      "name": "M. Tech. (Bio-Tech.) (2 Year)",
+      "short_name": "M. Tech. (Bio-Tech.)",
+      "level": "pg",
+      "stream": "engineering",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 968,
+    "fields": {
+      "university": 48,
+      "course": 507,
+      "total_seats": 12,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 968,
+    "fields": {
+      "university_course": 968,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "B.E./B.Tech. in Biotechnology/Biomedical Engineering/Biochemical Engineering/Industrial Biotechnology/Genetic Engineering/Food Technology/Chemical Engineering from AICTE/UGC/ICAR approved Institutions with overall minimum 50% marks in aggregate or equivalent CGPA (minimum 47.5% marks in aggregate or equivalent CGPA for SC/ST/Differently Abled Candidates), preferably with valid GATE Score. OR B.Pharmacy/ Master’s Degree in Microbiology / Biochemistry /Medical Biotechnology/ Veterinary Microbiolog",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 968,
+    "fields": {
+      "university_course": 968,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 508,
+    "fields": {
+      "name": "M.Tech. Mechanical Engineering (Industrial & Production Engg.) (2 Year)",
+      "short_name": "M.Tech. Mech. Engg. (Ind. & Pr",
+      "level": "pg",
+      "stream": "engineering",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 969,
+    "fields": {
+      "university": 48,
+      "course": 508,
+      "total_seats": 12,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 969,
+    "fields": {
+      "university_course": 969,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "Valid GATE score in the subject of Mechanical Engineering (ME)/Production and Industrial Engineering (PI) having B.Tech/B.E. in any branch of Engineering with overall minimum 50% marks in aggregate or equivalent CGPA (minimum 47.5% marks in aggregate or equivalent CGPA for SC/ST/ Differently Abled candidates). OR B.E./B.Tech. in:Mechanical Engineering/Mechanical Engineering (Industry Integrated)/ Mechanical and Automation Engineering/ Power Engineering/ Industrial and Production Engineering/Indu",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 969,
+    "fields": {
+      "university_course": 969,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 509,
+    "fields": {
+      "name": "M. Tech. (Electrical Engineering) (2 Year)",
+      "short_name": "M. Tech. (Electrical Engg.)",
+      "level": "pg",
+      "stream": "engineering",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 970,
+    "fields": {
+      "university": 48,
+      "course": 509,
+      "total_seats": 18,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 970,
+    "fields": {
+      "university_course": 970,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "Valid GATE score in the subject of Electrical Engineering/Instrumentation Engineering having B. Tech./B.E. or its equivalent in any branch of Engineering with overall minimum 50% marks in aggregate or equivalent CGPA (minimum 47.5% marks in aggregate or equivalent CGPA for SC/ST/Differently Abled candidates). OR B.E./B.Tech. or its equivalent in Electrical Engineering/Electrical and Computer Engineering/Electrical and Electronics Engineering/Electrical and Mechanical Engineering /Electrical and ",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 970,
+    "fields": {
+      "university_course": 970,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 510,
+    "fields": {
+      "name": "M. Tech. (Defence Technology) (2 Year)",
+      "short_name": "M. Tech. (Defence Technology)",
+      "level": "pg",
+      "stream": "engineering",
+      "duration_years": "2.0",
+      "description": "",
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.universitycourse",
+    "pk": 971,
+    "fields": {
+      "university": 48,
+      "course": 510,
+      "total_seats": 12,
+      "annual_fee": null,
+      "is_active": true
+    }
+  },
+  {
+    "model": "core.eligibilitycriteria",
+    "pk": 971,
+    "fields": {
+      "university_course": 971,
+      "min_10th_percentage": null,
+      "min_12th_percentage": null,
+      "required_stream": "",
+      "required_subjects": "",
+      "board_type": "any",
+      "min_age": null,
+      "max_age": null,
+      "min_graduation_percentage": "50.0",
+      "required_graduation": "B.E./B.Tech. in Aerospace Engineering/Aeronautical engineering/Applied Electronics and Communication Engineering/Applied Electronics and Instrumentation Engineering/ Chemical Technology/Chemical Engineering/Computer Science & Engineering/Computer and Communication Engineering/Computer Engineering/Computer Engineering and Applications/ Computer Networking/Computer Science and Information Technology/Computer Science and Technology/Computer Technology/Electrical and Instrumentation Engineering/Elec",
+      "entrance_exam": "KUK Entrance Test (programme-wise); GD/Interview/PET where applicable",
+      "domicile_required": false,
+      "category_reservation": {}
+    }
+  },
+  {
+    "model": "core.admissioncycle",
+    "pk": 971,
+    "fields": {
+      "university_course": 971,
+      "academic_year": "2026-2027",
+      "application_start": "2026-05-25",
+      "application_end": "2026-06-15",
+      "application_link": "https://iums.kuk.ac.in/anon_admissionHome.htm",
+      "application_fee": null,
+      "status": "open",
+      "counselling_date": null,
+      "merit_list_date": null,
+      "notes": "Admission mode: entrance-merit"
+    }
+  }
+]
