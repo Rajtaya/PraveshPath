@@ -514,7 +514,10 @@ function DetailModal({ item, onClose }) {
   return (
     <div className="detail-overlay" onClick={onClose}>
       <div className="detail-modal" onClick={e => e.stopPropagation()}>
-        <div className="detail-handle" onClick={onClose}><span /></div>
+        <div className="detail-handle" onClick={onClose}>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M14 5L8 11L14 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <span className="detail-handle__text">Back to Results</span>
+        </div>
         <button className="detail-close" onClick={onClose}>&times;</button>
 
         <div className="detail-modal__header">
@@ -641,28 +644,21 @@ function DetailModal({ item, onClose }) {
             animation: none;
           }
           .detail-handle {
-            display: flex; align-items: center; gap: 0.75rem;
-            padding: 0.9rem 1.25rem;
+            display: flex; align-items: center; gap: 0.5rem;
+            padding: 0.75rem 1rem;
             position: sticky; top: 0; z-index: 10;
-            background: white;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border, #e5e7eb);
             cursor: pointer;
           }
-          .detail-handle span {
-            width: 20px; height: 20px; position: relative;
+          .detail-handle svg {
+            color: var(--primary, #1a56db);
+            flex-shrink: 0;
           }
-          .detail-handle span::before,
-          .detail-handle span::after {
-            content: ''; position: absolute; left: 3px;
-            width: 10px; height: 2px; background: var(--text, #1f2937);
-            border-radius: 1px;
-          }
-          .detail-handle span::before { top: 7px; transform: rotate(-40deg); }
-          .detail-handle span::after { top: 12px; transform: rotate(40deg); }
-          .detail-handle::after {
-            content: 'Course Details';
-            font-size: 0.95rem; font-weight: 600;
-            color: var(--text, #1f2937);
+          .detail-handle__text {
+            font-size: 0.92rem; font-weight: 600;
+            color: var(--primary, #1a56db);
           }
           .detail-close { display: none; }
           .detail-modal__header { padding-top: 1rem; }
