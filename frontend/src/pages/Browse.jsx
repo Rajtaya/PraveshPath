@@ -236,7 +236,7 @@ export default function Browse() {
   return (
     <div className="b-page" style={{ animation: 'fadeInUp 0.3s ease both' }}>
       <button className="b-back" onClick={() => { setSelectedUni(null); window.scrollTo(0, 0) }}>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" /></svg>
+        <svg width="18" height="18" viewBox="0 0 22 22" fill="none"><path d="M14 5L8 11L14 17" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
         Back to Universities
       </button>
 
@@ -492,11 +492,15 @@ const styles = `
 
   /* Back button */
   .b-back {
-    display: inline-flex; align-items: center; gap: 0.35rem;
-    background: none; border: none; color: var(--primary); font-size: 0.88rem;
-    font-weight: 500; cursor: pointer; padding: 0; margin-bottom: 1.25rem;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--primary-light, #eff6ff); border: none;
+    color: var(--primary); font-size: 0.9rem; font-weight: 600;
+    cursor: pointer; padding: 0.55rem 1rem 0.55rem 0.7rem;
+    margin-bottom: 1.25rem; border-radius: 999px;
+    transition: all 0.15s ease;
   }
-  .b-back:hover { text-decoration: underline; }
+  .b-back:hover { background: var(--primary); color: white; }
+  .b-back:hover svg { color: white; }
 
   /* Detail header */
   .b-detail-header {

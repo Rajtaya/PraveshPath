@@ -329,7 +329,8 @@ function UniversityProgrammes({ group, onBack, selectedProg, setSelectedProg }) 
   return (
     <div className="uni-progs">
       <button className="uni-progs__back" onClick={onBack}>
-        &larr; Back to Universities
+        <svg width="18" height="18" viewBox="0 0 22 22" fill="none"><path d="M14 5L8 11L14 17" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        Back to Universities
       </button>
 
       <div className="uni-progs__header">
@@ -411,13 +412,15 @@ function UniversityProgrammes({ group, onBack, selectedProg, setSelectedProg }) 
 
       <style>{`
         .uni-progs__back {
-          background: none; border: none; color: var(--primary);
-          font-size: 0.9rem; font-weight: 600; cursor: pointer;
-          padding: 0.4rem 0; margin-bottom: 1rem;
-          display: flex; align-items: center; gap: 0.3rem;
-          transition: all var(--transition);
+          display: inline-flex; align-items: center; gap: 0.4rem;
+          background: var(--primary-light, #eff6ff); border: none;
+          color: var(--primary); font-size: 0.9rem; font-weight: 600;
+          cursor: pointer; padding: 0.55rem 1rem 0.55rem 0.7rem;
+          margin-bottom: 1.25rem; border-radius: 999px;
+          transition: all 0.15s ease;
         }
-        .uni-progs__back:hover { opacity: 0.8; }
+        .uni-progs__back:hover { background: var(--primary); color: white; }
+        .uni-progs__back:hover svg { color: white; }
 
         .uni-progs__header {
           display: flex; justify-content: space-between; align-items: flex-start;
@@ -644,8 +647,8 @@ function DetailModal({ item, onClose }) {
             animation: none;
           }
           .detail-handle {
-            display: flex; align-items: center; gap: 0.5rem;
-            padding: 0.75rem 1rem;
+            display: flex; align-items: center; gap: 0.25rem;
+            padding: 0.85rem 1rem;
             position: sticky; top: 0; z-index: 10;
             background: rgba(255,255,255,0.92);
             backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -655,10 +658,14 @@ function DetailModal({ item, onClose }) {
           .detail-handle svg {
             color: var(--primary, #1a56db);
             flex-shrink: 0;
+            width: 26px; height: 26px;
           }
           .detail-handle__text {
-            font-size: 0.92rem; font-weight: 600;
+            font-size: 1rem; font-weight: 600;
             color: var(--primary, #1a56db);
+          }
+          .detail-handle:active {
+            background: rgba(240,245,255,0.95);
           }
           .detail-close { display: none; }
           .detail-modal__header { padding-top: 1rem; }
